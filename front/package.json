@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sw": "sass --watch ./sass/input.scss:./css/style.min.css --style compressed"
+    "sw": "sass --watch ./sass/input.scss:./css/style.min.css --style compressed && postcss ./css/style.min.css --replace --use autoprefixer"
   },
   "author": "",
   "license": "ISC",
+  "browserslist": "last 4 versions",
   "dependencies": {
     "bootstrap": "^4.5.2"
   }
