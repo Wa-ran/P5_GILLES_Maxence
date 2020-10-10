@@ -1,0 +1,32 @@
+$primary: #8F5BFE;
+$secondary : #b694fd;
+$warning: #E68B07;
+$dark: #261624;
+$light: #F3E9F1;
+$body-color: $dark;
+
+#orinoco {
+    // pour gérer la taille max. du logo sur grand écran
+    max-width: 200px;
+}
+#dropdownBarButton {
+    // bouton dropdown avec le design d'un navbar
+    display: flex;
+    flex-direction: column;
+    width: 20px;
+    &>span {
+        // utilisation d'underscores pour simuler des barres, mais qui changent de couleur comme un dropdown
+        margin: 3px auto;
+        width: 100%;
+        border-top: solid 1px;
+        border-bottom: solid 1px;
+    }
+}
+#boutonLinks::after {
+    // pour enlever la flèche dropdown et ne laisser que les barres
+    display: none;
+}
+#champRecherche {
+    // pour supprimer le border-radius de gauche de la barre de recherche
+    border-radius: 0 3px 3px 0;
+}
