@@ -15,13 +15,43 @@
 
         <nav class="navbar navbar-light bg-light row w-100 no-gutters px-0 justify-content-center">
 
-            <div class="col-5 col-md-3">
-                <a class="navbar-brand ml-3 mr-0 my-0 p-0" href="./index.html" aria-current="page">
+            <div class="col-7 col-sm-3 col-md-3">
+                <a class="navbar-brand mx-3 mr-0 my-2 my-sm-0 p-0" href="./index.html" aria-current="page">
                     <img src="../images/orinoco.png" alt="Accueil" id="orinoco" width="100%">
                 </a>
-            </div>  
+            </div>
+
+            <div class="justify-content-center col-12 order-3 order-sm-2 col-sm-6 justify-content-sm-end pl-3">
+
+                <div id="recherche" class="input-group">
+                    <div class="input-group-prepend dropright form-inline my-2 my-lg-0">
+
+                        <button class="btn btn-outline-primary dropdown-toggle my-0 ml-0 ml-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Produits
+                        </button>
+
+                        <div class="dropdown-menu border-primary mt-5">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </div>
+
+                    <form class="form-inline my-2 my-lg-0 flex-nowrap">
+                        <input id="champRecherche" class="form-control border-secondary text-truncate" type="search" placeholder="Rechercher" aria-label="Rechercher">
+
+                        <button class="btn btn-outline-primary mx-3" type="submit">
+                            <span class="d-none d-lg-inline">Rechercher</span>
+                            <span class="d-lg-none">R</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
             
-            <div class="d-flex col-7 col-md-2 order-md-3 justify-content-end">
+            <div class="d-flex justify-content-end col-5 col-sm-3 order-2 order-sm-3">
 
                 <div class="input-group-prepend form-inline my-2 my-lg-0">
                     <button id="boutonLinks" class="btn btn-outline-primary dropdown-toggle my-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,31 +70,9 @@
                     </div>
                 </div>
 
-                <a class="nav-link p-1 mx-3 my-auto" href="./panier.html">
+                <a class="nav-link p-1 ml-2 mr-3 my-auto" href="./panier.html">
                     <img src="../images/panier.png" alt="Votre panier" height="40px">
                 </a>
-            </div>
-
-            <div class="input-group flex-nowrap justify-content-center col-12 justify-content-sm-end justify-content-md-center col-md-7 order-md-2">
-                <div class="input-group-prepend dropright form-inline my-2 my-lg-0">
-                    <button class="btn btn-outline-primary dropdown-toggle my-2 my-sm-0 ml-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Produits
-                    </button>
-                    <div class="dropdown-menu mt-5 border-primary">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
-                </div>
-                <form class="form-inline my-2 my-lg-0 flex-nowrap">
-                    <input id="champRecherche" class="form-control border-secondary" type="search" placeholder="Rechercher" aria-label="Rechercher">
-                    <button class="btn btn-outline-primary mx-3" type="submit">
-                        <span class="d-md-none d-lg-inline">Rechercher</span>
-                        <span class="d-none d-md-inline d-lg-none">R</span>
-                    </button>
-                </form>
             </div>
 
         </nav>

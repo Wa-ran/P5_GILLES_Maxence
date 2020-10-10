@@ -1,4 +1,4 @@
-﻿#orinoco{max-width:200px}#dropdownBarButton{display:flex;flex-direction:column;width:20px}#dropdownBarButton>span{margin:3px auto;width:100%;border-top:solid 1px;border-bottom:solid 1px}#boutonLinks::after{display:none}#champRecherche{border-radius:0 3px 3px 0}/*!
+﻿#orinoco{max-width:200px}#recherche{width:max-content;flex-wrap:nowrap;margin:auto}@media(min-width: 576px)and (max-width: 767.98px){#recherche{margin:0;margin-left:auto;width:auto}}#champRecherche{border-radius:0 3px 3px 0;width:100%;max-width:200px;flex:auto}#dropdownBarButton{display:flex;flex-direction:column;width:20px}#dropdownBarButton>span{margin:3px auto;width:100%;border-top:solid 1px;border-bottom:solid 1px}#boutonLinks::after{display:none}/*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
