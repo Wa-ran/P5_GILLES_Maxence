@@ -1,31 +1,22 @@
 $primary: #8F5BFE;
-$secondary : #b694fd;
+$secondary : lighten($primary, 20%);
 $warning: #E68B07;
+$info: lighten($warning, 50%);
 $dark: #261624;
 $light: #F3E9F1;
+
 $body-color: $dark;
+$dropdown-divider-bg: $secondary;
+$dropdown-link-hover-bg: $light;
 
 #orinoco {
     // pour gérer la taille max. du logo sur grand écran
     max-width: 200px;
 }
-#recherche {
-    // pour contrôler le bord gauche de input-group (alignement du menu dropdown)
-    width: max-content;
-    flex-wrap: nowrap;
-    margin: auto;
-    // Small devices (landscape phones, 576px and up)
-    @media (min-width: 576px) and (max-width: 767.98px) {
-    margin: 0;
-    margin-left: auto;  
-    width: auto;      
-    }
-}
-#champRecherche {
+#inputRecherche {
     // pour supprimer le border-radius de gauche de la barre de recherche
     border-radius: 0 3px 3px 0;
     width: 100%;
-    max-width: 200px;
     flex: auto;
 }
 #dropdownBarButton {
@@ -34,7 +25,6 @@ $body-color: $dark;
     flex-direction: column;
     width: 20px;
     &>span {
-        // utilisation d'underscores pour simuler des barres, mais qui changent de couleur comme un dropdown
         margin: 3px auto;
         width: 100%;
         border-top: solid 1px;
@@ -45,4 +35,27 @@ $body-color: $dark;
     // pour enlever la flèche dropdown et ne laisser que les barres
     display: none;
 }
-
+#boutonConnexion:hover {
+    // le hover était mal géré : conflit entre .btn-outline-primary et dropdown-toggle
+    background-color: darken($primary, 10%);
+}
+#boutonConnexion::before {
+    // pour enlever la flèche dropdown
+    display: none;
+}
+#menuConnexion {
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 0 0 0.5rem 0;
+    width: min-content;
+    height: min-content;
+    max-height: 80vh;
+    & .form-group {
+        margin-bottom: 1rem;
+    }
+}
