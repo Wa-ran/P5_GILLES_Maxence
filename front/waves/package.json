@@ -1,0 +1,11 @@
+{
+  "name": "waves",
+  "version": "1.0.0",
+  "description": "Copy from node-waves 0.7.6, find it there => http://fian.my.id/Waves, thanks a lot ! Personnal arrangements for background-color",
+  "main": "index.js",
+  "scripts": {
+    "sw": "sass ./waves.scss:./waves.min.css --style compressed && postcss ./waves.min.css --replace --use autoprefixer"
+  },
+  "author": "",
+  "license": "ISC"
+}
