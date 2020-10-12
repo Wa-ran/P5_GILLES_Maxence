@@ -1,7 +1,7 @@
-$primary: #8F5BFE;
+$primary: #7549d4;
 $secondary : lighten($primary, 20%);
 $warning: #E68B07;
-$info: lighten($warning, 50%);
+$info: lighten($warning, 30%);
 $dark: #261624;
 $light: #F3E9F1;
 
@@ -9,6 +9,14 @@ $body-color: $dark;
 $dropdown-divider-bg: $secondary;
 $dropdown-link-hover-bg: $light;
 
+body {
+    // pour fixer le footer en bas de l'écran (mt-auto) si le contenu de la page ne remplit pas l'écran
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+// Header
 #orinoco {
     // pour gérer la taille max. du logo sur grand écran
     max-width: 200px;
@@ -27,17 +35,21 @@ $dropdown-link-hover-bg: $light;
     &>span {
         margin: 3px auto;
         width: 100%;
-        border-top: solid 1px;
-        border-bottom: solid 1px;
+        border-top: solid 2px;
     }
 }
 #boutonLinks::after {
     // pour enlever la flèche dropdown et ne laisser que les barres
     display: none;
 }
-#boutonConnexion:hover {
-    // le hover était mal géré : conflit entre .btn-outline-primary et dropdown-toggle
-    background-color: darken($primary, 10%);
+.perso-btn-warn-style {
+    &:hover {
+        background-color: $warning !important;
+        color: $dark !important;
+        &:focus {
+            box-shadow: 0 0 0 0.2rem $info !important;
+        }
+    }
 }
 #boutonConnexion::before {
     // pour enlever la flèche dropdown
@@ -58,4 +70,10 @@ $dropdown-link-hover-bg: $light;
     & .form-group {
         margin-bottom: 1rem;
     }
+}
+
+// Footer
+body>footer a:hover {
+    // gestion du hover des liens en bas de page
+    background-color: $secondary
 }
