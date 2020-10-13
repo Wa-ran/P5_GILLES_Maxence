@@ -1,6 +1,6 @@
 $primary: #7549d4;
 $secondary : lighten($primary, 20%);
-$warning: #E68B07;
+$warning: #E68A0A;
 $info: lighten($warning, 30%);
 $dark: #261624;
 $light: #F3E9F1;
@@ -14,6 +14,15 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    &.bg-fixed {
+        // background
+        background: url(../images/orinoco-bg.webp);
+        background-attachment: fixed;
+        background-position: top 50px left 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
 }
 
 // Header
@@ -49,30 +58,6 @@ body {
         &:focus {
             box-shadow: 0 0 0 0.2rem $info !important;
         }
-    }
-}
-.counter-ovf-waves {
-    // ajouts car overflow:hidden de l'animation coupe le texte
-    width: max-content;
-}
-#boutonConnexion::before {
-    // pour enlever la flèche dropdown
-    display: none;
-}
-#menuConnexion {
-    overflow: auto;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    padding: 0 0 0.5rem 0;
-    width: min-content;
-    height: min-content;
-    max-height: 80vh;
-    & .form-group {
-        margin-bottom: 1rem;
     }
 }
 

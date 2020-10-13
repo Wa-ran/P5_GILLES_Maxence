@@ -12,8 +12,9 @@
     <title>Orinoco</title>
 </head>
 
-<body>
-    <header class="sticky-top px-0 border-bottom border-primary">
+<body class="bg-fixed">
+    
+    <header class="sticky-top px-0">
 
         <nav class="navbar navbar-light bg-light row w-100 no-gutters px-0 justify-content-center" aria-label="Principale">
 
@@ -67,34 +68,12 @@
                         <a class="dropdown-item border border-light rounded my-1" href="#">Accueil</a>
                         <a class="dropdown-item border border-light rounded my-1" href="#">Votre panier</a>
                         <div role="separator" class="dropdown-divider"></div>
-                        <button id="boutonConnexion" class="dropdown-item btn btn-outline-primary dropdown-toggle my-0 text-center perso-btn-warn-style" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                  
+                          <!-- Button trigger modal -->
+                        <button type="button" class="dropdown-item active btn btn-outline-primary my-0 text-center perso-btn-warn-style" data-toggle="modal" data-target="#exampleModalCenter">
                             Connexion
                         </button>
-                        <div id="menuConnexion" class="dropdown-menu border-primary">
-                            <form class="px-4 pt-3">
-                                <button type="button" class="close" aria-label="Fermer la fenêtre">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                <div class="form-group">
-                                    <label for="exampleDropdownFormEmail1">Adresse Mail</label>
-                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleDropdownFormPassword1">Mot  de Passe</label>
-                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-                                </div>
-                                <div class="form-check justify-content-start">
-                                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                                    <label class="form-check-label" for="dropdownCheck">
-                                    Se souvenir de moi
-                                    </label>
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-2 mb-1 perso-btn-warn-style border-0">Se connecter</button>
-                            </form>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Vous êtes nouveau ? Inscrivez vous !</a>
-                            <a class="dropdown-item" href="#">Motde Passe oublié ?</a>
-                          </div>                
+
                     </div>
                 </div>
 
@@ -105,7 +84,47 @@
         </nav>
     </header>
 
-    <div class="container-fluid bg-info p-3">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle" aria-label="Formulaire de connexion">Connexion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fermer la fenêtre">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="connexionMail">Adresse Mail</label>
+                            <input type="email" class="form-control" id="connexionMail" placeholder="email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="connexionPass">Mot de Passe</label>
+                            <input type="password" class="form-control" id="connexionPass" placeholder="Password">
+                        </div>
+                        <div class="custom-control custom-checkbox mr-sm-2">
+                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                            <label class="custom-control-label" for="customControlAutosizing">Se souvenir de moi</label>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary mt-3 mb-1 perso-btn-warn-style border-0">Se connecter</button>
+                        </div>
+                    </form>
+                    
+                    <div class="modal-footer mt-3 p-0 pt-2">
+                        <a class="dropdown-item rounded m-0" href="#">Nouveau ? Inscrivez vous !</a>
+                        <a class="dropdown-item rounded m-0" href="#">Mot de Passe oublié ?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid p-3">
         <div class="hero p-0 d-flex justify-content-center">
             <img src="../images/logo.png" alt="" id="heroLogo">
         </div>
@@ -186,7 +205,7 @@
     </div>
 
     <footer class="mt-auto">
-        <nav class="navbar-light bg-light" aria-label="Secondaire">
+        <nav class="navbar-light bg-light border-primary border-top" aria-label="Secondaire">
             <ul class="nav justify-content-center py-2">
                 <li class="nav-item">
                   <a class="nav-link px-3 py-1 rounded" href="#">Mentions Légales</a>
