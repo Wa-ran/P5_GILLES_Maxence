@@ -68,14 +68,11 @@ body {
     width: fit-content;
     color: $primary;
 }
-.imgProduct {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 150px;
-    background: $light url(../images/oak_3.jpg) no-repeat center;
-    background-size: auto 100%;
+.card-body>div {
+    width: auto;
+    height: 200px;
+    background: center no-repeat;
+    background-size: cover;
 }
 
 // Footer
