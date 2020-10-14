@@ -5,6 +5,10 @@ $info: lighten($warning, 30%);
 $dark: #261624;
 $light: #F3E9F1;
 
+$transparent: #fff0;
+$darken: #2616248f;
+$lighten: #F3E9F18f;
+
 $body-color: $dark;
 $dropdown-divider-bg: $secondary;
 $dropdown-link-hover-bg: $light;
@@ -14,10 +18,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: url(../images/orinoco-bg.webp);
-    background-repeat: no-repeat;
-    background-position: center 55px;
-    background-size: auto 100%;
 }
 
 // Header
@@ -56,41 +56,26 @@ body {
     }
 }
 
-// background
-// .bg-fixed {
-//     min-height: 100vh;
-//     background: url(../images/orinoco-bg.webp);
-//     background-repeat: no-repeat;
-//     background-position: center;
-//     background-size: auto 100%;
-// }
-
 // Hero
 #heroLogo {
-    border: $warning solid 3px;
-    border-radius: 10px;
+    min-width: 125px;
 }
 
 // cards
-.presProduct {
+.titleGroup {
     position: relative;
     bottom: 15px;
     width: fit-content;
+    color: $primary;
 }
 .imgProduct {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 200px;
-    background: url(../images/panier.png) center no-repeat;
-}
-.card-body {
-    position: relative;
-    bottom: 40px;
-    width: 90%;
-    height: 80px;
-    margin: auto;
+    height: 150px;
+    background: $light url(../images/oak_3.jpg) no-repeat center;
+    background-size: auto 100%;
 }
 
 // Footer
@@ -106,4 +91,7 @@ body>footer a:hover {
     position: fixed;
     bottom: 40px;
     right: 30px;
+    &:not(:hover) {
+        background-color: $lighten;
+    }
 }
