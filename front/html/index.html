@@ -12,23 +12,23 @@
     <title>Orinoco</title>
 </head>
 
-<body class="bg-fixed">
+<body>
     
-    <header class="sticky-top px-0">
+    <header class="px-0">
 
         <nav class="navbar navbar-light bg-light row w-100 no-gutters px-0 justify-content-center" aria-label="Principale">
-
+            <!-- Logo -->
             <div class="col-7 col-sm-3">
                 <a class="navbar-brand mx-3 mr-0 my-2 my-sm-0 p-0" href="./index.html" aria-current="page">
-                    <img src="../images/orinoco.png" alt="Accueil" id="orinoco" width="100%">
+                    <img src="../images/orinoco.png" alt="Orinoco" id="orinoco" aria-label="Lien vers l'accueil" width="100%">
                 </a>
             </div>
-
+            <!-- Groupe recherche -->
             <div class="justify-content-center col-12 order-3 order-sm-2 col-sm-6 justify-content-sm-end pl-3">
 
                 <div class="input-group justify-content-center flex-nowrap">
                     <div class="input-group-prepend dropright form-inline my-2 my-lg-0">
-
+                        <!-- Liste produits -->
                         <button class="btn btn-outline-primary shadow-none dropdown-toggle my-0 ml-0 ml-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Produits
                         </button>
@@ -43,7 +43,7 @@
                     </div>
 
                     <form class="form-inline my-2 my-lg-0 flex-nowrap">
-                        <input id="inputRecherche" class="form-control border-secondary text-truncate" type="search" placeholder="Rechercher" aria-label="Rechercher">
+                        <input id="inputRecherche" class="form-control border-secondary text-truncate" type="search" placeholder="Rechercher" aria-label="Rechercher" autofocus>
 
                         <button class="btn btn-outline-primary shadow-none mx-3 d-flex justify-content-center px-4" type="submit">
                             <span class="d-none d-lg-inline">Rechercher</span>
@@ -51,9 +51,8 @@
                         </button>
                     </form>
                 </div>
-
             </div>
-            
+            <!-- Groupe navigation -->
             <div class="d-flex justify-content-end col-5 col-sm-3 order-2 order-sm-3">
 
                 <div class="input-group-prepend form-inline my-2 my-lg-0">
@@ -69,8 +68,8 @@
                         <a class="dropdown-item border border-light rounded my-1" href="#">Votre panier</a>
                         <div role="separator" class="dropdown-divider"></div>
                                                   
-                          <!-- Button trigger modal -->
-                        <button type="button" class="dropdown-item active btn btn-outline-primary my-0 text-center perso-btn-warn-style" data-toggle="modal" data-target="#exampleModalCenter">
+                          <!-- Bouton modal -->
+                        <button type="button" class="dropdown-item active btn btn-outline-primary my-0 text-center perso-btn-warn-style" data-toggle="modal" data-target="#modalConnexion">
                             Connexion
                         </button>
 
@@ -85,7 +84,7 @@
     </header>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
 
@@ -124,80 +123,90 @@
         </div>
     </div>
 
-    <div class="container-fluid p-3">
-        <div class="hero p-0 d-flex justify-content-center">
-            <img src="../images/logo.png" alt="" id="heroLogo">
-        </div>
-    </div>
+    <!-- Background -->
+    <div class="bg-fixed">
 
-    <div class="container-fluid">
+        <div class="container-fluid">
 
-        <div class="row py-3">
-
-            <div class="col-4">
-                <div class="card w-100" style="width: 18rem;">
-                    <img class="card-img-top" src="../images/panier.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
+            <!-- Hero -->
+            <div class="container-fluid d-flex justify-content-center border border-primary rounded bg-light my-5">
+                <div class="">
+                    <h1 class="d-flex justify-content-center m-0">
+                        <img src="../images/logo.png" alt="Orinoco" width="20%">
+                    </h1>
+                    <hr class="mx-5 bg-primary">
+                    <p class="text-center">
+                        Votre produit mis en avant ici !
+                    </p>
+                </div>
             </div>
-            <div class="col-4">
-                <div class="card w-100" style="width: 18rem;">
-                    <img class="card-img-top" src="../images/panier.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-            </div>
-            <div class="col-4">
-                <div class="card w-100" style="width: 18rem;">
-                    <img class="card-img-top" src="../images/panier.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-            </div>
+            <!-- Groupe produit -->
+            <div class="container border border-primary rounded bg-light my-3">
 
-        </div>
+                <div class="border border-primary rounded bg-light p-1 presProduct">
+                    <div>
+                        <h2 class="h3 text-center m-2">Produit 1</h5>
+                    </div>
+                </div>
 
-        <div class="row py-3">
+                <div class="row py-3">
 
-            <div class="col-4">
-                <div class="card w-100" style="width: 18rem;">
-                    <img class="card-img-top" src="../images/panier.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card w-100 border-0 bg-light" style="width: 18rem;">
+                            <div class="waves border border-warning rounded imgProduct"></div>
+                            <div class="card-body border border-primary rounded d-flex justify-content-center align-items-center bg-light p-1">
+                                <div>
+                                    <h3 class="h5 card-title text-center m-0" id="titleProd1">Produit 1</h5>
+                                </div>
+                            </div>
+                            <a class="stretched-link" href="#" aria-labelledby="titleProd1" aria-labelledby="descProd1"></a>
+                        </div>
                     </div>
-                  </div>
-            </div>
-            <div class="col-4">
-                <div class="card w-100" style="width: 18rem;">
-                    <img class="card-img-top" src="../images/panier.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card w-100 border-0 bg-light" style="width: 18rem;">
+                            <div class="waves border border-warning rounded imgProduct"></div>
+                            <div class="card-body border border-primary rounded d-flex justify-content-center align-items-center bg-light p-1">
+                                <div>
+                                    <h3 class="h5 card-title text-center m-0" id="titleProd1">Produit 1</h5>
+                                </div>
+                            </div>
+                            <a class="stretched-link" href="#" aria-labelledby="titleProd1" aria-labelledby="descProd1"></a>
+                        </div>
                     </div>
-                  </div>
-            </div>
-            <div class="col-4">
-                <div class="card w-100" style="width: 18rem;">
-                    <img class="card-img-top" src="../images/panier.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card w-100 border-0 bg-light" style="width: 18rem;">
+                            <div class="waves border border-warning rounded imgProduct"></div>
+                            <div class="card-body border border-primary rounded d-flex justify-content-center align-items-center bg-light p-1">
+                                <div>
+                                    <h3 class="h5 card-title text-center m-0" id="titleProd1">Produit 1</h5>
+                                </div>
+                            </div>
+                            <a class="stretched-link" href="#" aria-labelledby="titleProd1" aria-labelledby="descProd1"></a>
+                        </div>
                     </div>
-                  </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card w-100 border-0 bg-light" style="width: 18rem;">
+                            <div class="waves border border-warning rounded imgProduct"></div>
+                            <div class="card-body border border-primary rounded d-flex justify-content-center align-items-center bg-light p-1">
+                                <div>
+                                    <h3 class="h5 card-title text-center m-0" id="titleProd1">Produit 1</h5>
+                                </div>
+                            </div>
+                            <a class="stretched-link" href="#" aria-labelledby="titleProd1" aria-labelledby="descProd1"></a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card w-100 border-0 bg-light" style="width: 18rem;">
+                            <div class="waves border border-warning rounded imgProduct"></div>
+                            <div class="card-body border border-primary rounded d-flex justify-content-center align-items-center bg-light p-1">
+                                <div>
+                                    <h3 class="h5 card-title text-center m-0" id="titleProd1">Produit 1</h5>
+                                </div>
+                            </div>
+                            <a class="stretched-link" href="#" aria-labelledby="titleProd1" aria-labelledby="descProd1"></a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -205,27 +214,31 @@
     </div>
 
     <footer class="mt-auto">
-        <nav class="navbar-light bg-light border-primary border-top" aria-label="Secondaire">
-            <ul class="nav justify-content-center py-2">
-                <li class="nav-item">
-                  <a class="nav-link px-3 py-1 rounded" href="#">Mentions Légales</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link px-3 py-1 rounded" href="#">Contact</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link px-3 py-1 rounded" href="#">Plan</a>
-                </li>
-              </ul>
-        </nav>
+            <nav class="navbar-light bg-light border-primary border-top" aria-label="Secondaire">
+                <ul class="nav justify-content-center py-2">
+                    <li class="nav-item">
+                    <a class="nav-link px-3 py-1 rounded" href="#">Mentions Légales</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link px-3 py-1 rounded" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link px-3 py-1 rounded" href="#">Plan</a>
+                    </li>
+                </ul>
+            </nav>
     </footer>
-    
+
+    <a onclick="topFunction()" id="pageUp" class="btn btn-outline-primary bg-warning" aria-label="Retour haut de page">
+        GO !
+    </a>
+
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../waves/waves.min.js">
-    </script>
+    <script type="text/javascript" src="../waves/waves.min.js"></script>
+    <script type="text/javascript" src="../js/waran.js"></script>
 </body>
 
 </html>
