@@ -5,7 +5,7 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    pageUp.style.display = "block";
+    pageUp.style.display = "flex";
   } else {
     pageUp.style.display = "none";
   }
