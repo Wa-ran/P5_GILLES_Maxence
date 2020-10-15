@@ -19,6 +19,10 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+.btn {
+    // pour n'enlever les ombres qu'aux boutons
+    box-shadow: none !important;
+}
 
 // Header
 #orinoco {
@@ -61,20 +65,6 @@ body {
     min-width: 125px;
 }
 
-// cards
-.titleGroup {
-    position: relative;
-    bottom: 15px;
-    width: fit-content;
-    color: $primary;
-}
-.card-body>div {
-    width: auto;
-    height: 200px;
-    background: center no-repeat;
-    background-size: cover;
-}
-
 // Footer
 body>footer a:hover {
     // gestion du hover des liens en bas de page
@@ -92,6 +82,40 @@ body>footer a:hover {
     &:not(:hover) {
         background-color: $lighten;
     }
+}
+
+
+// cards
+.titleGroup {
+    position: relative;
+    bottom: 15px;
+    width: fit-content;
+    color: $primary;
+}
+.card-body>div {
+    width: auto;
+    height: 200px;
+    background: center no-repeat;
+    background-size: cover;
+}
+
+// form product
+#formProduct {
+    & .col {
+    max-height: 38px;
+    min-width: max-content;
+    }
+    & * {
+        border-color: $warning;
+    }
+}
+#quantity {
+    width: fit-content;
+    flex: none;
+}
+#priceUnit {
+    font-weight: normal;
+    font-size: 1rem;
 }
 
 
