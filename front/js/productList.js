@@ -12,12 +12,6 @@ let menuProduct = document.getElementById('menuProduct');
 
 const productList = (title) => {
 
-  let ancre = document.createElement('a');
-  ancre.className = "dropdown-item rounded px-1";
-  ancre.href = './index.html#' + title;
-  ancre.innerHTML = title;
-  menuProduct.appendChild(ancre);
-
   let container = document.createElement('div');
   container.className = "container border border-primary rounded my-5";
   main.appendChild(container);

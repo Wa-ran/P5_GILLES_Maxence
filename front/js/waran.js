@@ -16,3 +16,18 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
+
+
+// Ancres produits du header
+const ancresList = (title) => {
+
+  let ancre = document.createElement('a');
+  ancre.className = "dropdown-item rounded px-1";
+  ancre.href = './index.html#' + title;
+  ancre.innerHTML = title;
+  menuProduct.appendChild(ancre);
+}
+ancresList('vcam');
+ancresList('oak');
+ancresList('teddy');
