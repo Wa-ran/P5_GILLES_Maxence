@@ -19,9 +19,9 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
-.btn {
+.btn:not(:focus) {
     // pour n'enlever les ombres qu'aux boutons
-    box-shadow: none !important;
+    box-shadow: none;
 }
 
 // Header
@@ -107,6 +107,9 @@ body>footer a:hover {
     }
     & * {
         border-color: $warning;
+        &:focus {
+            box-shadow: 0 0 0 0.2rem $info;
+        }
     }
 }
 #quantity {
