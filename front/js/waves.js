@@ -600,7 +600,7 @@
 });
 
 
-Waves.attach('.btn', ['waves-float', 'waves-light']);
+Waves.attach('.waves-btn', ['waves-float', 'waves-light']);
 Waves.attach('.waves', ['waves-block', 'waves-dark']);
 // Waves.attach('button', ['waves-float', 'waves-classic', 'waves-primary']);
 

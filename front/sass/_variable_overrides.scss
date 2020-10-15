@@ -99,7 +99,13 @@ body>footer a:hover {
     background-size: cover;
 }
 
-// form product
+// product
+.imgTitle {
+    position: relative;
+    bottom: -1.5rem;
+    left: 10px;
+    width: fit-content;
+}
 #formProduct {
     & .col {
     max-height: 38px;
@@ -119,6 +125,35 @@ body>footer a:hover {
 #priceUnit {
     font-weight: normal;
     font-size: 1rem;
+}
+.groupUser {
+    border-radius: 5px 5px 25px 25px;
+    & p {
+        margin-bottom: 0;
+    }
+}
+.infoUser {
+    height: 100%;
+    font-weight: normal !important;
+    font-size: 1rem !important;
+}
+#totalPanier {
+    width: fit-content;
+}
+#panier {
+    border-radius: 20px;
+    &>div{    
+        height: 34px;
+        width: 34px;
+        border: $primary solid 1px;
+        background: $light url(../images/panier.png) center no-repeat;
+        background-size: 80%;
+        border-radius: 50%;
+    }
+    &>span {
+        height: fit-content;
+        margin: auto;
+    }
 }
 
 

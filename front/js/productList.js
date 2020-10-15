@@ -10,7 +10,7 @@ let productListsdf = {
 let main = document.getElementsByTagName('main')[0];
 let menuProduct = document.getElementById('menuProduct');
 
-const productList = (title) => {
+const productList = (title , url) => {
 
   let container = document.createElement('div');
   container.className = "container border border-primary rounded my-5";
@@ -25,15 +25,20 @@ const productList = (title) => {
   row.className = "row pb-1";
   container.appendChild(row);
 
-  for (i = 0; i < 5; i++) {
-    let idNum = title + '_' + (i + 1);
-    let col = document.createElement('div');
-    col.className = "col-12 col-sm-6 col-md-4 col-lg-3";
-    col.innerHTML = '<div class="card my-2"><a class="card-body btn btn-outline-primary stretched-link p-0" href="./product.html"><div style="background-image: url(../../images/' + idNum + '.jpg);" class="card-img-top mb-2" alt=""></div><h5 class="card-title">' + idNum + '</h5><p class="card-text mb-3">' + idNum + '</p></a></div>';
-    row.appendChild(col);
-  }
+  ajaxGet(url, function(response) {
+    let list = JSON.parse(response);
+    for (i = 0; i < 5; i++) {
+      let object = list[i];
+      let name = object.name;
+      let imageUrl = object.imageUrl;
+      let col = document.createElement('div');
+      col.className = "col-12 col-sm-6 col-md-4 col-lg-3";
+      col.innerHTML = '<div class="card my-2"><a class="card-body btn btn-outline-primary stretched-link p-0" href="./' + name + '.html"><div style="background-image: url(' + imageUrl + ');" class="card-img-top mb-2" alt=""></div><h5 class="card-title">' + name + '</h5></a></div>';
+      row.appendChild(col);
+    }
+  })
 }
 
-productList('vcam');
-productList('oak');
-productList('teddy');
+productList('vcam', 'http://localhost:3000/api/cameras');
+productList('oak','http://localhost:3000/api/furniture');
+productList('teddy', 'http://localhost:3000/api/teddies');

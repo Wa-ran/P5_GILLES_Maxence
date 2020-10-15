@@ -28,7 +28,7 @@
               <div class="input-group justify-content-center flex-nowrap">
                   <div class="input-group-prepend dropright form-inline my-2 my-lg-0">
                       <!-- Liste produits -->
-                      <button class="btn btn-outline-primary dropdown-toggle my-0 ml-0 ml-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn waves-btn btn-outline-primary dropdown-toggle my-0 ml-0 ml-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Produits
                       </button>
 
@@ -39,7 +39,7 @@
                   <form class="form-inline my-2 my-lg-0 flex-nowrap">
                       <input id="inputRecherche" class="form-control border-secondary text-truncate" type="search" placeholder="Rechercher" aria-label="Rechercher" autofocus>
 
-                      <button class="btn btn-outline-primary mx-3 d-flex justify-content-center px-4" type="submit">
+                      <button class="btn waves-btn btn-outline-primary mx-3 d-flex justify-content-center px-4" type="submit">
                           <span class="d-none d-lg-inline">Rechercher</span>
                           <span class="d-lg-none">R</span>
                       </button>
@@ -50,7 +50,7 @@
           <div class="d-flex justify-content-end col-5 col-sm-3 order-2 order-sm-3">
 
               <div class="input-group-prepend form-inline my-2 my-lg-0">
-                  <button id="boutonLinks" class="btn btn-outline-primary dropdown-toggle my-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Afficher la navigation">
+                  <button id="boutonLinks" class="btn waves-btn btn-outline-primary dropdown-toggle my-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Afficher la navigation">
                       <div id="dropdownBarButton">
                           <span></span>
                           <span></span>
@@ -63,7 +63,7 @@
                       <div role="separator" class="dropdown-divider"></div>
                                                 
                         <!-- Bouton modal -->
-                      <button type="button" class="dropdown-item active btn btn-outline-primary my-0 text-center perso-btn-warn-style" data-toggle="modal" data-target="#modalConnexion">
+                      <button type="button" class="dropdown-item active bt waves-btnn btn-outline-primary my-0 text-center perso-btn-warn-style" data-toggle="modal" data-target="#modalConnexion">
                           Connexion
                       </button>
 
@@ -104,7 +104,7 @@
                           <label class="custom-control-label" for="customControlAutosizing">Se souvenir de moi</label>
                       </div>
                       <div class="d-flex justify-content-center">
-                          <button type="submit" class="btn btn-primary mt-3 mb-1 perso-btn-warn-style border-0">Se connecter</button>
+                          <button type="submit" class="btn waves-btn btn-primary mt-3 mb-1 perso-btn-warn-style border-0">Se connecter</button>
                       </div>
                   </form>
                   
@@ -120,10 +120,17 @@
   <main class="container-fluid">
 
     <div class="row">
-
-      <div class="col-12 col-sm-8 col-md-6 col-lg-8">
+      <!-- côté produit -->
+      <div class="col-12 col-sm-8">
         <div>
-          <img class="container-fluid img-thumbnail border border-warning mt-3 p-0" src="../../images/vcam_3.jpg" alt="">
+
+          <div class="border border-warning rounded bg-white p-1 imgTitle">
+            <div>
+              <h1 class="h5 text-center m-1">Groupe produit 1</h1>
+            </div>
+          </div>
+          <img class="container-fluid img-thumbnail border border-warning p-0" src="../../images/vcam_3.jpg" alt="">
+
         </div>
         <div class="container p-0">
           <form id="formProduct" class="row mt-3 p-0">
@@ -154,21 +161,73 @@
               <p id="priceUnit" class="badge badge-info align-self-end my-0 mr-2">
                 Prix : <span>0</span> €
               </p>
-              <button type="submit" class="btn btn-warning">
+              <button type="submit" class="btn waves-btn btn-warning">
               Ajouter au panier
               </button>
             </div>
 
           </form>
         </div>
+
+        <div class="col-12 border border-info rounded">
+          <div>
+            Description du produit
+          </div>
+        </div>
+
       </div>
+      <!-- côté Utilisateur -->
+      <div class="col-12 col-sm-4">
+        <div class="container border border-primary bg-light p-2 my-3 groupUser">
+          
+          <div class="d-flex justify-content-between p-0">  
+            <p>Utilisateur : </p>
+            <span class="h5 badge bg-white infoUser">
+              userId
+            </span>
+          </div>
+          <div class="d-flex justify-content-between p-0">
+            <p>E-Mail : </p>
+            <span class="h5 badge bg-white infoUser">
+              userMail
+            </span>
+          </div>
 
-      <div class="col-12 col-sm-4 col-md-6 col-lg-4">
-        <div class="border border-primary rounded">
+          <p>Adresse enregistrée : </p>
+          <span class="h5 badge bg-white align-self-end text-justify my-0 w-100 infoUser">
+            Terre, Système Solaire<br>Première à droite
+          </span>
 
+          <p id="totalPanier" class="rounded my-2">
+            Total Panier : 
+            <span class="h5 badge bg-white border border-primary align-self-end text-justify my-0 infoUser">0 €
+            </span>
+          </p>
+
+          <a id="panier" class="btn btn-primary btn-block d-flex align-items-center p-0" href="./panier.html">
+            <div></div>
+            <span>Voir mon panier</span>
+          </a>
+        </div>
+
+        <div class="container border border-primary rounded mt-4 mb-3">
+
+          <div class="border border-primary rounded bg-white p-1 mb-n3 titleGroup">
+              <div>
+                  <h2 class="h6 text-center m-0">Dans la même catégorie</h2>
+              </div>
+          </div>
+
+          <div class="card my-2">
+            <a class="card-body btn btn-outline-primary stretched-link p-0" href="#">
+              <img src="../../images/vcam_5.jpg" class="card-img-top mb-2" alt="...">
+              <h5 class="card-title">Produit 1</h5>
+              <p class="card-text mb-3">Description</p>
+            </a>
+          </div>
+            
         </div>
       </div>
-
     </div>
 
   </main>
@@ -189,7 +248,7 @@
     </nav>
   </footer>
 
-    <a onclick="topFunction()" id="pageUp" class="btn btn-outline-primary justify-content-center align-items-center p-0" aria-label="Retour haut de page">
+    <a onclick="topFunction()" id="pageUp" class="btn waves-btn btn-outline-primary justify-content-center align-items-center p-0" aria-label="Retour haut de page">
       <span class="fas fa-chevron-up fa-2x"></span>
     </a>
 
@@ -197,6 +256,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/ajax.js"></script>
     <script type="text/javascript" src="../js/waves.js"></script>
     <script type="text/javascript" src="../js/waran.js"></script>
 </body>

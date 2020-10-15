@@ -31,3 +31,8 @@ const ancresList = (title) => {
 ancresList('vcam');
 ancresList('oak');
 ancresList('teddy');
+
+ajaxGet('http://localhost:3000/api/cameras', function(response) {
+  let resp = JSON.parse(response);
+  console.log(resp[0])
+})
