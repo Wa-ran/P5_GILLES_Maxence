@@ -13,7 +13,7 @@ function ajaxGet(url) {
             }
         };
         req.onerror = function() {
-            reject(Error("Erreur réseau" + req.status + " > " + req.statusText +  "> " + url))
+            reject(Error("Erreur réseau avec " + url))
         };
         req.send();
     });
