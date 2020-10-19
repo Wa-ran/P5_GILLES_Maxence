@@ -1,0 +1,26 @@
+<!-- INDEX : Groupe produit exemple v.1-->
+
+<div class="container border border-primary rounded my-3">
+
+    <div class="border border-primary rounded bg-white p-1 titleGroup">
+        <div>
+            <h2 class="h3 text-center m-2">Groupe produit 1</h2>
+        </div>
+    </div>
+
+    <div class="row pb-1">
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card my-2">
+          <a class="card-body btn btn-outline-primary stretched-link p-0" href="#">
+            <img src="../images/vcam_3.jpg" class="card-img-top mb-2" alt="...">
+            <h5 class="card-title">Produit 1</h5>
+            <p class="card-text mb-3">Description</p>
+          </a>
+        </div>
+      </div>
+      
+    </div>
+</div>
+
+<!-- INDEX : Groupe produit exemple v.1-->

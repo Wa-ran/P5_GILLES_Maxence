@@ -135,8 +135,8 @@ body>footer a:hover {
 }
 .infoUser {
     height: 100%;
-    font-weight: normal !important;
     font-size: 1rem !important;
+    color: $primary;
 }
 #totalPanier {
     width: fit-content;
@@ -150,6 +150,7 @@ body>footer a:hover {
         background: $light url(../images/panier.png) center no-repeat;
         background-size: 80%;
         border-radius: 50%;
+        border-color: $warning;
     }
     &>span {
         height: fit-content;
