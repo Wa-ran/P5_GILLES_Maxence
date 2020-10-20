@@ -13,7 +13,7 @@ const newType = (title, url) => {
 let vcam = newType('Caméras vintage', 'http://localhost:3000/api/cameras');
 let oak = newType('Meubles en chêne', 'http://localhost:3000/api/furniture');
 let teddy = newType('Ours en peluche fait mains', 'http://localhost:3000/api/teddies');
-// Un array avec les 3 types de produits et les chemins d'accès vers les API est créé
+// Un array avec les noms des types de produits et les chemins d'accès vers leur API est créé
 
 
 // Ancres pour la liste produits du header ------------------------------------------------------------

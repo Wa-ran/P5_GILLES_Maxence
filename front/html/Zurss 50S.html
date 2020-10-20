@@ -124,12 +124,12 @@
       <div class="col-12 col-sm-8 px-lg-5">
         <div>
 
-          <div class="border border-warning rounded bg-white p-1 imgTitle">
+          <div class="border border-warning rounded bg-white d-flex align-items-center p-1 imgTitle">
             <div>
-              <h1 class="h5 text-center m-1">Groupe produit 1</h1>
+              <h1 class="h5 text-center m-1"></h1>
             </div>
           </div>
-          <img class="container-fluid img-thumbnail border border-warning p-0" src="../../images/vcam_3.jpg" alt="">
+          <img id="productImg" class="container-fluid img-thumbnail border border-warning p-0" alt="">
 
         </div>
         <div class="container p-0">
@@ -170,8 +170,7 @@
         </div>
 
         <div class="col-12 border border-info rounded">
-          <div>
-            Description du produit
+          <div id="productDescription">
           </div>
         </div>
 
@@ -206,9 +205,9 @@
             </span>
           </p>
 
-          <a id="panier" class="btn btn-primary btn-block d-flex align-items-center p-0" href="./panier.html">
-            <div></div>
-            <span>Voir mon panier</span>
+          <a id="panier" class="btn btn-primary btn-block d-flex align-items-center p-0 perso-btn-warn-style" href="./panier.html">
+            <div id="panierLogo"></div>
+            <span id="panierText">Voir mon panier</span>
           </a>
         </div>
 
@@ -223,7 +222,7 @@
           <div class="card my-2 border-white">
             <a class="card-body btn btn-outline-primary stretched-link p-0" href="#">
               <img src="../../images/vcam_5.jpg" class="card-img-top mb-2" alt="...">
-              <h5 class="card-title">Produit 1</h5>
+              <h5 class="card-title">Example</h5>
               <p class="card-text mb-3">Description</p>
             </a>
           </div>
@@ -255,8 +254,8 @@
     </a>
 
     <!-- JS, Popper.js, and jQuery -->
-    <script type="text/javascript" src="../js/waran.js"></script>
     <script type="text/javascript" src="../js/ajax.js"></script>
+    <script type="text/javascript" src="../js/waran.js"></script>
     <script type="text/javascript" src="../js/productPage.js"></script>
     <script type="text/javascript" src="../js/waves.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -1,5 +1,4 @@
 // Exécute un appel AJAX GET
-// Prend en paramètre l'URL cible
 // Utilisation des promises
 function ajaxGet(url) {
     return new Promise(function(resolve, reject) {

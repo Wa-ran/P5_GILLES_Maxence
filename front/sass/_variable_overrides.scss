@@ -99,7 +99,7 @@ body>footer a:hover {
     background-size: cover;
 }
 
-// product
+// product page
 .imgTitle {
     position: relative;
     bottom: -1rem;
@@ -141,21 +141,26 @@ body>footer a:hover {
 #totalPanier {
     width: fit-content;
 }
+// bouton panier
 #panier {
     border-radius: 20px;
-    &>div{    
-        height: 34px;
-        width: 34px;
-        border: $primary solid 1px;
-        background: $light url(../images/panier.png) center no-repeat;
-        background-size: 80%;
-        border-radius: 50%;
-        border-color: $warning;
-    }
-    &>span {
-        height: fit-content;
-        margin: auto;
-    }
+    height: 35px;
+    border: none;
+}
+#panierLogo {
+    height: 34px;
+    width: 34px;
+    border: $primary solid 1px;
+    background: $light url(../images/panier.png) center no-repeat;
+    background-size: 80%;
+    border-radius: 50%;
+    border-color: $warning;
+}
+#panierText {
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    font-weight: bold;
 }
 
 
