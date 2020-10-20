@@ -44,8 +44,10 @@ window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     pageUp.style.display = "flex";
+    pageUp.setAttribute('aria-hidden', 'false');
   } else {
     pageUp.style.display = "none";
+    pageUp.setAttribute('aria-hidden', 'true');
   }
 }
 

@@ -77,7 +77,7 @@
       </nav>
   </header>
 
-  <!-- Modal -->
+  <!-- Modal Connexion -->
   <div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
           <div class="modal-content">
@@ -115,6 +115,26 @@
               </div>
           </div>
       </div>
+  </div>
+
+  <!-- Modal produit inconnu -->
+  <div class="modal fade" id="modalBack" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="h5 modal-title" id="staticBackdropLabel">Oups !</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Le produit recherché n'existe pas.
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-primary" href="./index.html">Revenir à l'accueil</a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <main class="container-fluid px-md-5">

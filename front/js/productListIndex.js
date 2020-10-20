@@ -24,7 +24,7 @@ const productList = (title , url) => {
       let col = document.createElement('div');
       col.id = title;
       col.className = "col-12 col-sm-6 col-md-4 col-lg-3";
-      col.innerHTML = '<div class="card my-2 border-white"><a class="card-body btn btn-outline-primary stretched-link p-0" href="./' + name + '.html"><div style="background-image: url(' + imageUrl + ');" class="card-img-top mb-2" alt=""></div><h5 class="card-title">' + name + '</h5></a></div>';
+      col.innerHTML = '<div class="card my-2 border-white"><a class="card-body btn btn-outline-primary stretched-link p-0" href="./product.html#'+ name + '"><div style="background-image: url(' + imageUrl + ');" class="card-img-top mb-2" alt=""></div><h5 class="card-title">' + name + '</h5></a></div>';
       row.appendChild(col); 
     };
   });
