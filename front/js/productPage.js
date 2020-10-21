@@ -1,42 +1,40 @@
 // Récupère le nom du produit par l'url
 let currentUrl = window.location.href;
-let clean = currentUrl.replaceAll('%20', ' ').replace('.html', '');
-let path = clean.lastIndexOf('#');
-let title = clean.substring(path + 1);
-let productTitle = document.querySelector('main h1');
-productTitle.textContent = title;
+let path = currentUrl.lastIndexOf('#');
+let info = currentUrl.substring(path + 1);
+let separator = info.lastIndexOf('-id-');
+let id = info.substring(separator + 4);
+let group = info.replace(('-id-' + id), '');
+group = decodeURI(group);
 
-// Récupère les infos du produit par une recherche du nom dans les listes
-let i = 0;
+// Récupération de l'url de l'API
+let productType;
 for (type of typeList) {
-  ajaxGet(type.url)
-  .then(function(resolve) { 
-    i++;
-    // Recherche dans la liste des produits
-    let find = resolve.indexOf('"name":"' + title + '",');
-    if (find < 0 && i == typeList.length) {
-      // Le produit n'existe pas, appelle un modal boostrap
-      return $(document).ready(function(){
-        $("#modalBack").modal('show')});
-    }
-    else if (find < 0) {
-      // Le produit n'est pas dans cette liste
-    }
-    else {
-      // Produit trouvé dans cette liste => on recherche le bon produit
-      resolve = JSON.parse(resolve);
-      for (object of resolve) {
-        if (object.name === title) {
-          return paint(object);
-        }
-      };
-    };
-  });
-};
-// Affichage de l'image et de la description
-const paint = (product) => {
-  let productImg = document.getElementById('productImg');
-  productImg.src = product.imageUrl;
-  let productDescription = document.getElementById('productDescription');
-  productDescription.textContent = product.description;
+  let title = type.title;
+  if (title === group) {
+    productType = type;
+    break
+  }
 }
+let productUrl = productType.apiUrl + '/' + id;
+// On rempli la page produit !
+ajaxGet(productUrl).then(JSON.parse).then(function(resolve) {
+  // Titre du produit
+  let productTitle = document.querySelector('main h1');
+  productTitle.textContent = resolve.name;
+  // Image
+  let productImg = document.getElementById('productImg');
+  productImg.src = resolve.imageUrl;
+  // Selection des options
+  let options = document.getElementById('options');
+  // L'option de personnalisation est toujours la première clef
+  let perso = resolve[Object.keys(resolve)[0]];
+  for (option of perso) {
+    let newOption = document.createElement('option');
+    newOption.textContent = option;
+    options.appendChild(newOption);
+  };
+  // Description
+  let productDescription = document.getElementById('productDescription');
+  productDescription.textContent = resolve.description;
+});

@@ -24,3 +24,38 @@
 </div>
 
 <!-- INDEX : Groupe produit exemple v.1-->
+
+
+<!-- JS PRODUCTPAGE : quand l'url contenait le nom du produit XD-->
+// Récupère les infos du produit par une recherche du nom dans les listes
+// let i = 0;
+// for (type of typeList) {
+//   if (i === -1)
+//     // Le produit à été trouvé et la fonction doit s'arrêter
+//     break;
+//   ajaxGet(type.url)
+//   .then(function(resolve) { 
+//     i++;
+//     // Recherche dans la liste des produits
+//     let find = resolve.indexOf('"name":"' + title + '",');
+//     if (find < 0 && i === typeList.length) {
+//       // Le produit n'existe pas, appelle un modal boostrap
+//       return $(document).ready(function(){
+//         $("#modalBack").modal('show')});
+//     }
+//     else if (find < 0) {
+//       // Le produit n'est pas dans cette liste
+//     }
+//     else {
+//       // Produit trouvé dans cette liste => on recherche le bon produit
+//       resolve = JSON.parse(resolve);
+//       for (object of resolve) {
+//         if (object.name === title) {
+//           paint(object);
+//           return i = -1;
+//         }
+//       };
+//     };
+//   });
+// };
+<!-- JS PRODUCTPAGE : quand l'url contenait le nom du produit XD-->

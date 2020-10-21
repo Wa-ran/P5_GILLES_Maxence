@@ -1,18 +1,18 @@
 // Constructeur pour faciliter la création et l'utilisation de nouveaux types de produits -----------------------------------------------------------
 let typeList = [];
 class Type {
-  constructor(title, url) {
+  constructor(title, apiUrl) {
     this.title = title;
-    this.url = url;
+    this.apiUrl = apiUrl;
   }
 };
-const newType = (title, url) => {
-  let thisNewType = new Type (title, url);
+const newType = (title, apiUrl) => {
+  let thisNewType = new Type (title, apiUrl);
   typeList.push(thisNewType);
 };
-let vcam = newType('Caméras vintage', 'http://localhost:3000/api/cameras');
+let vcam = newType('Caméras vintages', 'http://localhost:3000/api/cameras');
 let oak = newType('Meubles en chêne', 'http://localhost:3000/api/furniture');
-let teddy = newType('Ours en peluche fait mains', 'http://localhost:3000/api/teddies');
+let teddy = newType('Ours en peluche faits main', 'http://localhost:3000/api/teddies');
 // Un array avec les noms des types de produits et les chemins d'accès vers leur API est créé
 
 
@@ -33,7 +33,12 @@ for (type of typeList) {
 ajaxGet('http://localhost:3000/api/cameras').then(JSON.parse).then(function(response) {
   console.log(response)
 })
-
+ajaxGet('http://localhost:3000/api/teddies').then(JSON.parse).then(function(response) {
+  console.log(response)
+})
+ajaxGet('http://localhost:3000/api/cameras/5be9c4c71c9d440000a730e9').then(JSON.parse).then(function(response) {
+  console.log(response)
+})
 
 
 // Bouton haut de page ------------------------------------------------------

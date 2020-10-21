@@ -123,9 +123,6 @@
       <div class="modal-content">
         <div class="modal-header">
           <p class="h5 modal-title" id="staticBackdropLabel">Oups !</p>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
         <div class="modal-body">
           Le produit recherché n'existe pas.
@@ -156,11 +153,8 @@
           <form id="formProduct" class="row mt-3 p-0">
 
             <div class="col-12 mb-2">  
-              <select class="form-control" aria-label="Choisir une option">
+              <select id="options" class="form-control" aria-label="Choisir une option">
                 <option selected value="0">Aucune option</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
               </select>
             </div>
 
@@ -185,11 +179,10 @@
               Ajouter au panier
               </button>
             </div>
-
           </form>
         </div>
 
-        <div class="col-12 border border-info rounded">
+        <div class="col-12 border border-info rounded mb-5">
           <div id="productDescription">
           </div>
         </div>
@@ -250,7 +243,6 @@
         </div>
       </div>
     </div>
-
   </main>
 
   <footer class="mt-auto">
