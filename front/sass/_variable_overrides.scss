@@ -24,7 +24,7 @@ body {
     box-shadow: none;
 }
 
-// Header
+// Header -------------------------------------------------------------
 #orinoco {
     // pour gérer la taille max. du logo sur grand écran
     max-width: 200px;
@@ -59,7 +59,7 @@ body {
         }
     }
 }
-
+// Index ----------------------------------------------------------------
 // Hero
 #heroLogo {
     min-width: 125px;
@@ -84,7 +84,6 @@ body>footer a:hover {
     }
 }
 
-
 // cards
 .titleGroup {
     position: relative;
@@ -99,7 +98,7 @@ body>footer a:hover {
     background-size: cover;
 }
 
-// product page
+// product page ---------------------------------------------------------
 .imgTitle {
     position: relative;
     bottom: -1rem;
@@ -123,7 +122,7 @@ body>footer a:hover {
     width: fit-content;
     flex: none;
 }
-#priceUnit {
+#priceUnit, #quantity {
     font-weight: normal;
     font-size: 1rem;
 }
@@ -142,12 +141,14 @@ body>footer a:hover {
     width: fit-content;
 }
 // bouton panier
-#panier {
+#panierBtn {
     border-radius: 20px;
     height: 35px;
     border: none;
+    display: flex;
+    justify-content: center;
 }
-#panierLogo {
+.panierLogo {
     height: 34px;
     width: 34px;
     border: $primary solid 1px;
@@ -156,12 +157,26 @@ body>footer a:hover {
     border-radius: 50%;
     border-color: $warning;
 }
-#panierText {
+.panierText {
     width: fit-content;
     height: fit-content;
-    margin: auto;
+    flex: 1;
     font-weight: bold;
+    &+div {
+        width: 15px;
+    }
 }
+
+// Page panier -----------------------------------------------------------
+#thePanier {
+    border-bottom: $secondary solid 1px;
+    @media (min-width: 576px) {
+    border-bottom: none;
+    border-left: $secondary solid 1px;
+    }
+}
+
+
 
 
 /*!
