@@ -6,13 +6,13 @@ class Type {
     this.apiUrl = apiUrl;
   }
 };
-const newType = (title, apiUrl) => {
-  let thisNewType = new Type (title, apiUrl);
-  typeList.push(thisNewType);
+const addType = (title, apiUrl) => {
+  let thisnewType = new Type (title, apiUrl);
+  typeList.push(thisnewType);
 };
-let vcam = newType('Caméras vintages', 'http://localhost:3000/api/cameras');
-let oak = newType('Meubles en chêne', 'http://localhost:3000/api/furniture');
-let teddy = newType('Ours en peluche faits main', 'http://localhost:3000/api/teddies');
+let vcam = addType('Caméras vintages', 'http://localhost:3000/api/cameras');
+let oak = addType('Meubles en chêne', 'http://localhost:3000/api/furniture');
+let teddy = addType('Ours en peluche faits main', 'http://localhost:3000/api/teddies');
 // Un array avec les noms des types de produits et les chemins d'accès vers leur API est créé
 
 
