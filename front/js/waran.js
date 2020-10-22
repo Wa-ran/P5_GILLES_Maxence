@@ -29,18 +29,6 @@ for (type of typeList) {
 }
 
 
-
-ajaxGet('http://localhost:3000/api/cameras').then(JSON.parse).then(function(response) {
-  console.log(response)
-})
-ajaxGet('http://localhost:3000/api/teddies').then(JSON.parse).then(function(response) {
-  console.log(response)
-})
-ajaxGet('http://localhost:3000/api/cameras/5be9c4c71c9d440000a730e9').then(JSON.parse).then(function(response) {
-  console.log(response)
-})
-
-
 // Bouton haut de page ------------------------------------------------------
 let pageUp = document.getElementById('pageUp');
 // When the user scrolls down 20px from the top of the document, show the button

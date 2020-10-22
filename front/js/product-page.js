@@ -1,3 +1,4 @@
+let product;
 // Récupère le nom du groupe et l'id du produit par l'url
 let currentUrl = window.location.href;
 let path = currentUrl.lastIndexOf('#');
@@ -20,19 +21,20 @@ const fillPage = (object) => {
   let productUrl = object.apiUrl + '/' + id;
   ajaxGet(productUrl)
   // Si erreur réseau (mauvaise url pour l'API) ou 404 (id n'existe pas) => modal
-  .catch(function(reject) {modal()})
+  .catch(function() { modal() })
   .then(JSON.parse)
   .then(function(resolve) {
+    product = resolve;
     // Titre du produit
     let productTitle = document.querySelector('main h1');
-    productTitle.textContent = resolve.name;
+    productTitle.textContent = product.name;
     // Image
     let productImg = document.getElementById('productImg');
-    productImg.src = resolve.imageUrl;
+    productImg.src = product.imageUrl;
     // Selection des options
     let options = document.getElementById('options');
     // L'option de personnalisation est toujours la première clef
-    let perso = resolve[Object.keys(resolve)[0]];
+    let perso = product[Object.keys(product)[0]];
     for (option of perso) {
       let newOption = document.createElement('option');
       newOption.textContent = option;
@@ -40,12 +42,42 @@ const fillPage = (object) => {
     };
     // Description
     let productDescription = document.getElementById('productDescription');
-    productDescription.textContent = resolve.description;
+    productDescription.textContent = product.description;
+    // Prix
+    price();
   });
 }
 
+// Afichage du prix
+const price = () => {
+  let pricePurchase = qnt.value * (product.price / 100);
+  let priceText = document.getElementById('priceText');
+  priceText.textContent = 'Prix : ' + pricePurchase + ' €';
+}
+
+// Gestion du formulaire d'achat
+let formProduct = document.getElementById('formProduct');
+
+let qnt = document.getElementById('quantity');
+qnt.addEventListener('change', () => { price() });
+
+let qntStored;
+let qntTotale;
+formProduct.addEventListener('submit', (e) => {
+  e.preventDefault();
+  qntStored = parseInt(sessionStorage.getItem(id));
+  qntPurchase = parseInt(qnt.value);
+  if (isNaN(qntStored) === true) {  
+    qntTotale = qntPurchase;
+  }
+  else {
+    qntTotale = qntStored + qntPurchase;
+  };
+  sessionStorage.setItem(product._id, qntTotale);
+});
+
+
 // Recherche du groupe du produit
-let product;
 for (type of typeList) {
   let title = type.title;
   if (title === group) {
