@@ -3,11 +3,11 @@ let product;
 let currentUrl = window.location.href;
 let path = currentUrl.lastIndexOf('#');
 let info = currentUrl.substring(path + 1);
+info = decodeURI(info);
+info = info.replace('_', ' ');
 let separator = info.lastIndexOf('/id-');
 let id = info.substring(separator + 4);
 let group = info.replace(('/id-' + id), '');
-group = decodeURI(group);
-group = group.replace('_', ' ');
 
 const modal = () => {
   // Affichage d'un modal (Bootstrap) pour retour à l'accueil en cas d'erreur
@@ -16,9 +16,10 @@ const modal = () => {
   })
 };
 
+let productUrl;
 const fillPage = (object) => {
   // Pour remplir la page produit
-  let productUrl = object.apiUrl + '/' + id;
+  productUrl = object.apiUrl + '/' + id;
   ajaxGet(productUrl)
   // Si erreur réseau (mauvaise url pour l'API) ou 404 (id n'existe pas) => modal
   .catch(function() { modal() })
@@ -55,27 +56,46 @@ const price = () => {
   priceText.textContent = 'Prix : ' + pricePurchase + ' €';
 }
 
+// Affichage du prix du panier (fonction dans waran.js)
+let basketPrice = document.querySelector('#basketPrice>span');
+const write = async (position) => {
+  let result = await totalPrice();
+  position.textContent = result / 100 + " €";    
+};
+write(basketPrice);
+
 // Gestion du formulaire d'achat
 let formProduct = document.getElementById('formProduct');
 
 let qnt = document.getElementById('quantity');
 qnt.addEventListener('change', () => { price() });
 
-let qntStored;
-let qntTotale;
+let qntStored, qntTotale;
 formProduct.addEventListener('submit', (e) => {
   e.preventDefault();
-  qntStored = parseInt(sessionStorage.getItem(id));
   qntPurchase = parseInt(qnt.value);
-  if (isNaN(qntStored) === true) {  
+  try {
+    qntStored = localStorage.getItem(product.name);
+    qntStored = JSON.parse(qntStored);
+    qntStored = parseInt(qntStored.qnt);
+  }
+  catch {
+    // Si le produit n'est pas déjà stocké (=null)
+    qntStored = 0;
+  };
+  if (isNaN(qntStored) === true) {
+    // Si le produit est stoké mais erreur sur la value qnt
     qntTotale = qntPurchase;
   }
   else {
     qntTotale = qntStored + qntPurchase;
   };
-  sessionStorage.setItem(product._id, qntTotale);
+  let store = {"api" : productUrl, "qnt" : qntTotale};
+  // Stockage de l'achat
+  localStorage.setItem(product.name, JSON.stringify(store));
+  // Maj du prix du panier
+  write(basketPrice);
 });
-
 
 // Recherche du groupe du produit
 for (type of typeList) {

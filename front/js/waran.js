@@ -28,6 +28,21 @@ for (type of typeList) {
   ancresList(type.title);
 }
 
+// Fonction pour afficher le prix total du panier, utilisé sur les pages produit et panier
+const totalPrice = async () => {
+  let total = 0;
+  for (let i=0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let store = JSON.parse(localStorage.getItem(key));
+    await ajaxGet(store.api)
+    .then(JSON.parse)
+    .then(function(resolve) {
+      total = total + (resolve.price * store.qnt)
+    })
+    .catch()
+  };
+  return total
+}
 
 // Bouton haut de page ------------------------------------------------------
 let pageUp = document.getElementById('pageUp');
