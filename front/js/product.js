@@ -58,15 +58,10 @@ const price = () => {
 
 // Affichage du prix du panier (fonction dans waran.js)
 let basketPrice = document.querySelector('#basketPrice>span');
-const write = async (position) => {
-  let result = await totalPrice();
-  position.textContent = result / 100 + " €";    
-};
-write(basketPrice);
+writeTotal(basketPrice);
 
 // Gestion du formulaire d'achat
 let formProduct = document.getElementById('formProduct');
-
 let qnt = document.getElementById('quantity');
 qnt.addEventListener('change', () => { price() });
 
@@ -80,7 +75,7 @@ formProduct.addEventListener('submit', (e) => {
     qntStored = parseInt(qntStored.qnt);
   }
   catch {
-    // Si le produit n'est pas déjà stocké (=null)
+    // Si le produit n'existe pas dans le panier (=null)
     qntStored = 0;
   };
   if (isNaN(qntStored) === true) {
@@ -90,18 +85,18 @@ formProduct.addEventListener('submit', (e) => {
   else {
     qntTotale = qntStored + qntPurchase;
   };
-  let store = {"api" : productUrl, "qnt" : qntTotale};
+  let store = {"api" : productUrl, "qnt" : qntTotale, "group" : group};
   // Stockage de l'achat
   localStorage.setItem(product.name, JSON.stringify(store));
   // Maj du prix du panier
-  write(basketPrice);
+  writeTotal(basketPrice);
 });
 
 // Recherche du groupe du produit
 for (type of typeList) {
   let title = type.title;
   if (title === group) {
-    // On a trouvé le groupe du produit
+    // On a trouvé le groupe du produit => remplir la page
     product = type;
     fillPage(product);
     break

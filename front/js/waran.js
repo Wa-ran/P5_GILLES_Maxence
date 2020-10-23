@@ -28,21 +28,39 @@ for (type of typeList) {
   ancresList(type.title);
 }
 
-// Fonction pour afficher le prix total du panier, utilisé sur les pages produit et panier
-const totalPrice = async () => {
-  let total = 0;
+// Fonction pour récupérer depuis localStorage la liste des produits achetés en y ajoutant la quantité
+const getStore = async () => {
+  let purchaseList = [];
   for (let i=0; i < localStorage.length; i++) {
     let key = localStorage.key(i);
     let store = JSON.parse(localStorage.getItem(key));
     await ajaxGet(store.api)
     .then(JSON.parse)
     .then(function(resolve) {
-      total = total + (resolve.price * store.qnt)
+      resolve["quantity"] = store.qnt;
+      resolve["category"] = store.group;
+      purchaseList.push(resolve);
     })
     .catch()
   };
+  return purchaseList
+}
+
+// Fonction pour calculer le prix total du panier, utilisée pour écrire et envoyé avec le formulaire de commande
+const totalPrice = async () => {
+  let total = 0;
+  let purchaseList = await getStore();
+  for (purchase of purchaseList) {
+    total = total + (purchase.quantity * purchase.price)
+  }
   return total
 }
+
+// Pour l'écriture du prix total (product et panier), utilisée sur les pages produit et panier
+const writeTotal = async (position) => {
+  let result = await totalPrice();
+  position.textContent = result / 100 + " €";
+};
 
 // Bouton haut de page ------------------------------------------------------
 let pageUp = document.getElementById('pageUp');

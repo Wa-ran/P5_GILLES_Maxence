@@ -175,10 +175,42 @@ body>footer a:hover {
         border-left: $secondary solid 1px;
     }
 }
+#toutVide {
+    display: none;
+}
 #basket {
     max-height: 350px;
+    & .badge {
+        font-size: 90%;
+    }
 }
-
+.quantity {
+    height: 1.5rem;
+    width: 3rem;
+    padding: 0 0.25rem;
+    margin: auto 0.25rem;
+    font-size: 1rem;
+    color: $dark;
+}
+.increment {
+    display: flex;
+    flex-wrap: nowrap;
+    width: min-content;
+    &>button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1.5rem;
+        height: 1.2rem;
+        margin: 0;
+        padding: 0 0 0.2rem 0;
+        font-weight: bold;
+        border-radius: 0;
+    }
+}
+.productName {
+    color: $dark !important;
+}
 
 
 
