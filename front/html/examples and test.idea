@@ -74,3 +74,29 @@
   </p>
 </div>
 <!-- PANIER.HTML : "carte" des produits du panier -->
+
+<!-- PANIER.HTML : "carte" des produits du panier V.2-->
+<!-- <div class="dropdown-divider mx-5"></div>
+
+<div class="d-flex flex-column align-items-center">
+
+  <div class="d-flex flex-nowrap text-truncate w-100">
+    <input id="prod1" type="text" class="rounded border border-secondary align-self-end text-center m-0 quantity" placeholder="1" maxlength="2" required>
+    <label for="prod1" class="text-truncate pt-1 mb-0 ml-2 font-italic productName">Product</label>
+  </div>
+</div>
+
+<div class="d-flex justify-content-between mb-1">
+  <div class="increment">
+    <button id="prod1-" class="btn btn-secondary rounded-left">-</button>
+    <button id="prod1+" class="btn btn-secondary rounded-right">+</button>
+  </div>
+  <p class="badge align-self-end badge bg-white border border-secondary mb-0 font-weight-normal">
+    <span class="font-weight-bold">0 €</span>
+  </p>
+</div> -->
+<!-- PANIER.HTML : "carte" des produits du panier V.2-->
+
+<!-- PANIER.HTML : "carte" des produits du panier V.3-->
+Principal changement = ajout d'un bouton de suppression
+<!-- PANIER.HTML : "carte" des produits du panier V.3-->

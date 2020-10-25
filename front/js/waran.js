@@ -36,17 +36,26 @@ const getStore = async () => {
     // Test des items pour ne sélectionner que ceux qui nous concernent
     if (RegExp('http://localhost:3000/api/').test(key) === true) {
       let store = JSON.parse(key);
-      // On récupère les infos des produits
-      await ajaxGet(store.api)
-      .then(JSON.parse)
-      .then(function(resolve) {
-        // on ajoute aux infos la quantité et la catégorie
-        resolve["quantity"] = store.qnt;
-        resolve["category"] = store.group;
-        purchaseList.push(resolve);
-      })
-      .catch(function() { return })      
+      // Test si la quantité est bien un chiffre
+      if (/^\d/.test(store.qnt) == false) {
+        localStorage.removeItem(store.name);
+      } 
+      else {
+        if (store.qnt > 9) {
+          store.qnt = 9;
+        }
+        // On récupère les infos des produits
+        await ajaxGet(store.api)
+        .then(JSON.parse)
+        .then(function(resolve) {
+          // on ajoute aux infos la quantité et la catégorie
+          resolve["quantity"] = store.qnt;
+          resolve["category"] = store.group;
+          purchaseList.push(resolve);
+        })
+        .catch(function() { return }) 
       };
+    };
   };
   // Retourne un array des produits dans le panier et leurs infos
   return purchaseList

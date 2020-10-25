@@ -25,6 +25,35 @@ const writeBasket = async () => {
     prodPrice[i] = document.getElementById('prodPrice' + i.toString());
     prodName[i] = document.getElementById('prodName' + i.toString());
   }
+  // Pour empêcher l'utilisateur d'entrer autre chose que des chiffres dans les inputs des produits
+  function setInputFilter(textbox, inputFilter) {
+    ["input"].forEach(function(event) {
+      textbox.addEventListener(event, function() {
+        if (inputFilter(this.value)) {
+          this.oldValue = this.value;
+          this.oldSelectionStart = this.selectionStart;
+          this.oldSelectionEnd = this.selectionEnd;
+        } else if (this.hasOwnProperty("oldValue")) {
+          this.value = this.oldValue;
+          this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+        } else {
+          this.value = "";
+        }
+      });
+    });
+  };
+  // Pour bloquer la quantité d'achat entre 1 et 9
+  const verif = (input, j) => {
+    if (input.value < 1) {
+      return input.value = 1;
+    }
+    else if (input.value > 9) {
+      return input.value = 9;
+    }
+    else {
+      qntChange(j);
+    }
+  };
   // Fonction pour recalculer le prix du produit et du panier au changement de la quantité
   const qntChange = (j) => {
     let prodChange = prodInBasket[j - 1];
@@ -48,30 +77,26 @@ const writeBasket = async () => {
     parent.remove();
     localStorage.removeItem(prodInBasket[j - 1].name);
     writeTotal(totalPanier);
-  }
+  };
   // Nouvelles loops ('i' en cours d'utilisation donc => 'j')
   // Solution au fait qu'en réécrivant le HTML avec la loop précédente => les addEvent sont perdus (sauf le dernier)
   for (let j = 1; j <= i; j++) {
+      setInputFilter(prodQnt[j], function(value) {
+      return /^\d$/.test(value);
+    });
     btnInc[j].addEventListener('click', () => {
       prodQnt[j].value++;
-      qntChange(j);
+      verif(prodQnt[j], j);
     });
     btnDec[j].addEventListener('click', () => {
       prodQnt[j].value--;
-      if (prodQnt[j].value < 1) {
-        return prodQnt[j].value = 1;
-      }
-      qntChange(j);
+      verif(prodQnt[j], j);
     });
-    prodQnt[j].addEventListener('input', () => {
-      if (prodQnt[j].value < 1) {
-        return prodQnt[j].value = 1;
-      }
-      qntChange(j);
+    prodQnt[j].addEventListener('change', () => {
+      verif(prodQnt[j], j);
     });
     btnDelete[j].addEventListener('click', () => {
       removeParent(btnDelete[j], 3, j);
-
     });
   };
   // jQuery pour forcer la sélection de tout le texte des inputs text
