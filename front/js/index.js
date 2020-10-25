@@ -25,7 +25,7 @@ const productList = (title , url) => {
     // Carte de chaque produits, voir Ajax.js
     for (object of resolve) {
       let col = document.createElement('div');
-      let titleUrl = title.replace(' ', '_');
+      let titleUrl = title.replaceAll(' ', '_');
       col.className = "col-12 col-sm-6 col-md-4 col-lg-3";
       col.innerHTML = '<div class="card my-2 border-white"><a class="card-body btn btn-outline-primary stretched-link p-0" href="./product.html#' + titleUrl + '/id-' + object._id + '"><div style="background-image: url(' + object.imageUrl + ');" class="card-img-top mb-2" alt=""></div><h5 class="card-title">' + object.name + '</h5></a></div>';
       row.appendChild(col); 

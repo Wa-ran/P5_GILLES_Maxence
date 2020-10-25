@@ -28,21 +28,27 @@ for (type of typeList) {
   ancresList(type.title);
 }
 
-// Fonction pour récupérer depuis localStorage la liste des produits achetés en y ajoutant la quantité
+// Fonction pour récupérer depuis localStorage la liste des produits achetés en y ajoutant la catégorie (pour l'api) et la quantité
 const getStore = async () => {
   let purchaseList = [];
   for (let i=0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    let store = JSON.parse(localStorage.getItem(key));
-    await ajaxGet(store.api)
-    .then(JSON.parse)
-    .then(function(resolve) {
-      resolve["quantity"] = store.qnt;
-      resolve["category"] = store.group;
-      purchaseList.push(resolve);
-    })
-    .catch()
+    let key = localStorage.getItem(localStorage.key(i));
+    // Test des items pour ne sélectionner que ceux qui nous concernent
+    if (RegExp('http://localhost:3000/api/').test(key) === true) {
+      let store = JSON.parse(key);
+      // On récupère les infos des produits
+      await ajaxGet(store.api)
+      .then(JSON.parse)
+      .then(function(resolve) {
+        // on ajoute aux infos la quantité et la catégorie
+        resolve["quantity"] = store.qnt;
+        resolve["category"] = store.group;
+        purchaseList.push(resolve);
+      })
+      .catch(function() { return })      
+      };
   };
+  // Retourne un array des produits dans le panier et leurs infos
   return purchaseList
 }
 

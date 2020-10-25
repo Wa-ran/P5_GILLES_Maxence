@@ -4,7 +4,7 @@ let currentUrl = window.location.href;
 let path = currentUrl.lastIndexOf('#');
 let info = currentUrl.substring(path + 1);
 info = decodeURI(info);
-info = info.replace('_', ' ');
+info = info.replaceAll('_', ' ');
 let separator = info.lastIndexOf('/id-');
 let id = info.substring(separator + 4);
 let group = info.replace(('/id-' + id), '');
@@ -57,8 +57,9 @@ const price = () => {
 }
 
 // Affichage du prix du panier (fonction dans waran.js)
+let inStore = getStore();
 let basketPrice = document.querySelector('#basketPrice>span');
-writeTotal(basketPrice);
+writeTotal(basketPrice, inStore);
 
 // Gestion du formulaire d'achat
 let formProduct = document.getElementById('formProduct');
@@ -68,7 +69,7 @@ qnt.addEventListener('change', () => { price() });
 let qntStored, qntTotale;
 formProduct.addEventListener('submit', (e) => {
   e.preventDefault();
-  qntPurchase = parseInt(qnt.value);
+  let qntPurchase = parseInt(qnt.value);
   try {
     qntStored = localStorage.getItem(product.name);
     qntStored = JSON.parse(qntStored);
@@ -89,7 +90,8 @@ formProduct.addEventListener('submit', (e) => {
   // Stockage de l'achat
   localStorage.setItem(product.name, JSON.stringify(store));
   // Maj du prix du panier
-  writeTotal(basketPrice);
+  let inStore = getStore();  
+  writeTotal(basketPrice, inStore);
 });
 
 // Recherche du groupe du produit
