@@ -15,7 +15,7 @@ const writeBasket = async () => {
     for (product of prodInBasket) {
     i++;
     let div = document.createElement('div');
-    div.innerHTML = '<div class="dropdown-divider mx-5"></div><div class="d-flex flex-column align-items-center"><div class="d-flex flex-nowrap text-truncate w-100"><input id="prodQnt' + i + '" type="text" class="rounded border border-secondary align-self-end text-center m-0 quantity" maxlength="2" required><label for="prodQnt' + i + '" class="text-truncate p-1 mb-0 ml-2 font-weight-bold productName"><a id="prodName' + i + '" href="./product.html#' + product.category + '/id-' + product._id + '">' + product.name + '</a></label></div></div><div class="d-flex flex-nowrap mb-1"><div class="prodBasketBtn"><button id="btnDec' + i + '" class="btn btn-secondary rounded-left">-</button><button id="btnInc' + i + '" class="btn btn-secondary rounded-right">+</button></div><div class="prodBasketBtn"><button id="btnDelete' + i + '" class="btn btn-secondary rounded ml-1">x</button></div><p class="badge align-self-end badge bg-white border border-secondary mb-0 font-weight-bold ml-auto"><span id="prodPrice' + i + '">' + (product.price * product.quantity) / 100 + '</span> €</p></div>';
+    div.innerHTML = '<div class="dropdown-divider mx-5"></div><div class="d-flex flex-column align-items-center"><div class="d-flex flex-nowrap text-truncate w-100"><input id="prodQnt' + i + '" type="text" class="rounded border border-secondary align-self-end text-center m-0 quantity" maxlength="2" required><label for="prodQnt' + i + '" class="text-truncate p-1 mb-0 ml-2 font-weight-bold productName"><a id="prodName' + i + '" href="./product.html#' + product.category + '/id-' + product._id + '">' + product.name + '</a></label></div></div><div class="d-flex flex-nowrap mb-1"><div class="prodBasketBtn"><button id="btnDec' + i + '" class="btn btn-secondary rounded-left" aria-label="Retirer 1">-</button><button id="btnInc' + i + '" class="btn btn-secondary rounded-right" aria-label="Ajouter 1">+</button></div><div class="prodBasketBtn"><button id="btnDelete' + i + '" class="btn btn-secondary rounded ml-1" aria-label="Enlever du panier">x</button></div><p class="badge align-self-end badge bg-white border border-secondary mb-0 font-weight-bold ml-auto"><span id="prodPrice' + i + '">' + (product.price * product.quantity) / 100 + '</span> €</p></div>';
     basket.appendChild(div);
     prodQnt[i] = document.getElementById('prodQnt' + i.toString());
     prodQnt[i].value = product.quantity.toString();
@@ -27,12 +27,13 @@ const writeBasket = async () => {
   }
   // Fonction pour recalculer le prix du produit et du panier au changement de la quantité
   const qntChange = (j) => {
-    prodInBasket[j - 1].quantity = prodQnt[j].value;
-    prodPrice[j].textContent = (prodInBasket[j - 1].price * prodInBasket[j - 1].quantity) / 100;
+    let prodChange = prodInBasket[j - 1];
+    prodChange.quantity = prodQnt[j].value;
+    prodPrice[j].textContent = (prodChange.price * prodChange.quantity) / 100;
 
-    let storeQnt = JSON.parse(localStorage.getItem(prodInBasket[j - 1].name));
-    storeQnt.qnt = prodInBasket[j - 1].quantity;
-    localStorage.setItem(prodInBasket[j - 1].name, JSON.stringify(storeQnt));
+    let storeQnt = JSON.parse(localStorage.getItem(prodChange.name));
+    storeQnt.qnt = prodChange.quantity;
+    localStorage.setItem(prodChange.name, JSON.stringify(storeQnt));
 
     writeTotal(totalPanier);
   };
@@ -57,9 +58,15 @@ const writeBasket = async () => {
     });
     btnDec[j].addEventListener('click', () => {
       prodQnt[j].value--;
+      if (prodQnt[j].value < 1) {
+        return prodQnt[j].value = 1;
+      }
       qntChange(j);
     });
     prodQnt[j].addEventListener('input', () => {
+      if (prodQnt[j].value < 1) {
+        return prodQnt[j].value = 1;
+      }
       qntChange(j);
     });
     btnDelete[j].addEventListener('click', () => {
