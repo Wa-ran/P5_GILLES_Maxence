@@ -10,6 +10,7 @@ let id = info.substring(separator + 4);
 let group = info.replace(('/id-' + id), '');
 
 const modal = () => {
+  document.querySelector('main>div').style.display = 'none';
   // Affichage d'un modal (Bootstrap) pour retour à l'accueil en cas d'erreur
   return $(document).ready(function(){
     $("#modalBack").modal('show')

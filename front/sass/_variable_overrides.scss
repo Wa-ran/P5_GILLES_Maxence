@@ -27,6 +27,7 @@ body {
 // Header -------------------------------------------------------------
 #orinoco {
     // pour gérer la taille max. du logo sur grand écran
+    width: 100%;
     max-width: 200px;
 }
 #inputRecherche {
@@ -62,6 +63,7 @@ body {
 // Index ----------------------------------------------------------------
 // Hero
 #heroLogo {
+    width: 20%;
     min-width: 125px;
 }
 
