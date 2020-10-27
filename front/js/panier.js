@@ -18,7 +18,10 @@ const writeBasket = async () => {
   // Panier vide = demande à l'utilisateur de le remplir bien-sûr ^^
   if (prodInBasket.length == 0) {
     document.getElementById('toutVide').style.display = 'unset';
-    document.getElementById('colFrom').style.display = 'none';
+    document.getElementById('colForm').style.display = 'none';
+    document.getElementById('totalPanier').style.display = 'none';
+    document.getElementById('thePanier').style.margin = 'auto';
+    document.getElementById('thePanier').style.border = 'none';
     return
   };
 
@@ -130,6 +133,10 @@ const writeBasket = async () => {
     let confirmation = {};
     // On vérifie en récupérant une dernière fois les produits au cas où des changements auraient eu lieu (nouveaux produits ou quantité depuis un autre onglet par ex.)
     prodInBasket = await getStore();
+    if (prodInBasket.length === 0) {
+      location.reload();
+      return
+    };
     // Objet contact
     let contact = {
       "firstName" : commande.elements.firstName.value,
@@ -145,6 +152,7 @@ const writeBasket = async () => {
       for (product of prodInBasket) {
         if (RegExp(type.title).test(product.category) === true) {
           products.push(product._id);
+          localStorage.removeItem(product.name)
         }
       };
       if (products.length > 0) {
