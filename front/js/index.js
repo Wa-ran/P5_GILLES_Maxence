@@ -14,7 +14,7 @@ const productList = (title , url) => {
     main.appendChild(container);
     // Titre du groupe de produits
     let titleGroup = document.createElement('div');
-    titleGroup.id = title;
+    titleGroup.id = title.replaceAll(' ', '_');
     titleGroup.className = "border border-primary rounded bg-white p-1 titleGroup";
     titleGroup.innerHTML = '<div><h2 class="h3 text-center m-2" id="' + title + '">' + title + '</h2></div>';
     container.appendChild(titleGroup);

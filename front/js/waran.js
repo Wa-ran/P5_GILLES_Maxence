@@ -20,7 +20,7 @@ let teddy = addType('Ours en peluche faits main', 'http://localhost:3000/api/ted
 const ancresList = (title) => {
   let ancre = document.createElement('a');
   ancre.className = "dropdown-item rounded px-1";
-  ancre.href = './index.html#' + title;
+  ancre.href = './index.html#' + title.replaceAll(' ', '_');
   ancre.innerHTML = title;
   menuProduct.appendChild(ancre);
 }
