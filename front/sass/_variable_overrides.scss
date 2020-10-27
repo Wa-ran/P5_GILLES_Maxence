@@ -179,7 +179,7 @@ body>footer a:hover {
     display: none;
 }
 #basket {
-    max-height: 350px;
+    max-height: 425px;
     & .badge {
         font-size: 90%;
     }
@@ -212,6 +212,14 @@ body>footer a:hover {
     color: $dark !important;
 }
 
+// Page confirmation
+ul[class = list-unstyled] > li {
+    margin-left: 1rem;
+}
+#address + a {
+    margin: auto;
+    max-width: fit-content;
+}
 
 
 /*!

@@ -125,35 +125,39 @@
 
     <div class="container border border-primary rounded bg-light">
       <div class="row">
-        <div class="col-12 order-2 col-sm-8 order-sm-1 p-3">
+        <div id="colForm" class="col-12 order-2 col-sm-8 order-sm-1 p-3">
           <!-- Formulaire de commande -->
-          <form>
+          <form id="commande">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="lastName">Nom</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Obligatoire" required>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Obligatoire" required>
               </div>
               <div class="form-group col-md-6">
                 <label for="firstName">Prénom</label>
-                <input type="password" class="form-control" id="firstName" placeholder="Obligatoire" required>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Obligatoire" required>
               </div>
             </div>
             <div class="form-group">
-              <label for="inputAddress">Adresse</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="Résident Sélénite" required>
+              <label for="email">E-mail</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="exemple@exemple.fr" required>
             </div>
             <div class="form-group">
-              <label for="inputAddress2">Compléments/Instructions</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Vous pouvez déposer les colis au voisin">
+              <label for="address">Adresse</label>
+              <input type="text" class="form-control" id="address" name="address" placeholder="Résident Sélénite" required>
+            </div>
+            <div class="form-group">
+              <label for="address2">Compléments/Instructions</label>
+              <input type="text" class="form-control" id="address2" name="address2" placeholder="Vous pouvez déposer les colis au voisin">
             </div>
             <div class="form-row">
               <div class="form-group col-md-9">
-                <label for="inputCity">Ville</label>
-                <input type="text" class="form-control" id="inputCity" placeholder="Obligatoire" required>
+                <label for="city">Ville</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Obligatoire" required>
               </div>
               <div class="form-group col-md-3">
-                <label for="inputZip">Code postal</label>
-                <input type="text" class="form-control text-center" id="inputZip" placeholder="00000" maxlength="5" required>
+                <label for="zip">Code postal</label>
+                <input type="text" class="form-control text-center" id="zip" name="zip" placeholder="00000" maxlength="5" required>
               </div>
             </div>
             <div class="form-group">

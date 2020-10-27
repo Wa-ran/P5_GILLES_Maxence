@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../css/style.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+
+    <title>Orinoco</title>
+</head>
+
+<body>
+    
+  <header class="px-0 border-bottom border-primary">
+
+      <nav class="navbar navbar-light bg-light row w-100 no-gutters px-0 justify-content-center" aria-label="Principale">
+          <!-- Logo -->
+          <div class="col-7 col-sm-3">
+              <a class="navbar-brand mx-3 mr-0 my-2 my-sm-0 p-0" href="./index.html" aria-current="page">
+                  <img src="../images/orinoco.png" alt="Orinoco" id="orinoco" aria-label="Lien vers l'accueil" width="100%">
+              </a>
+          </div>
+          <!-- Groupe recherche -->
+          <div class="justify-content-center col-12 order-3 order-sm-2 col-sm-6 justify-content-sm-end pl-3">
+
+              <div class="input-group justify-content-center flex-nowrap">
+                  <div class="input-group-prepend dropright form-inline my-2 my-lg-0">
+                      <!-- Liste produits -->
+                      <button class="btn waves-btn btn-outline-primary dropdown-toggle my-0 ml-0 ml-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Produits
+                      </button>
+
+                      <div class="dropdown-menu border-primary mt-5 mr-3 px-3" id="menuProduct">
+                      </div>
+                  </div>
+
+                  <form class="form-inline my-2 my-lg-0 flex-nowrap">
+                      <input id="inputRecherche" class="form-control border-secondary text-truncate" type="search" placeholder="Rechercher" aria-label="Rechercher" autofocus>
+
+                      <button class="btn waves-btn btn-outline-primary mx-3 d-flex justify-content-center px-3 px-lg-4" type="submit">
+                          <span class="d-none d-lg-inline">Rechercher</span>
+                          <span class="d-lg-none fas fa-search p-1"></span>
+                      </button>
+                  </form>
+              </div>
+          </div>
+          <!-- Groupe navigation -->
+          <div class="d-flex justify-content-end col-5 col-sm-3 order-2 order-sm-3">
+
+              <div class="input-group-prepend form-inline my-2 my-lg-0">
+                  <button id="boutonLinks" class="btn waves-btn btn-outline-primary dropdown-toggle my-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Afficher la navigation">
+                      <div id="dropdownBarButton">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right border-primary dropleft mr-3 px-3">
+                      <a class="dropdown-item border border-light rounded my-1" href="#">Accueil</a>
+                      <a class="dropdown-item border border-light rounded my-1" href="#">Votre panier</a>
+                      <div role="separator" class="dropdown-divider"></div>
+                                                
+                        <!-- Bouton modal -->
+                      <button type="button" class="dropdown-item active btn waves-btnn btn-outline-primary my-0 text-center perso-btn-warn-style" data-toggle="modal" data-target="#modalConnexion">
+                          Connexion
+                      </button>
+
+                  </div>
+              </div>
+
+              <a class="nav-link p-1 ml-2 mr-3 my-auto" href="./panier.html">
+                  <img src="../images/panier.png" alt="Votre panier" height="40px">
+              </a>
+          </div>
+      </nav>
+  </header>
+
+  <!-- Modal Connexion -->
+  <div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+
+              <div class="modal-header">
+                  <h5 class="modal-title" id="modalTitle" aria-label="Formulaire de connexion">Connexion</h5>
+                  <button type="button" class="close shadow-none" data-dismiss="modal" aria-label="Fermer la fenêtre">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+
+              <div class="modal-body">
+                  <form>
+                      <div class="form-group">
+                          <label for="connexionMail">Adresse Mail</label>
+                          <input type="email" class="form-control" id="connexionMail" placeholder="email@example.com">
+                      </div>
+                      <div class="form-group">
+                          <label for="connexionPass">Mot de Passe</label>
+                          <input type="password" class="form-control" id="connexionPass" placeholder="Password">
+                      </div>
+                      <div class="custom-control custom-checkbox mr-sm-2">
+                          <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                          <label class="custom-control-label" for="customControlAutosizing">Se souvenir de moi</label>
+                      </div>
+                      <div class="d-flex justify-content-center">
+                          <button type="submit" class="btn waves-btn btn-primary mt-3 mb-1 perso-btn-warn-style border-0">Se connecter</button>
+                      </div>
+                  </form>
+                  
+                  <div class="modal-footer mt-3 p-0 pt-2">
+                      <a class="dropdown-item rounded m-0" href="#">Nouveau ? Inscrivez vous !</a>
+                      <a class="dropdown-item rounded m-0" href="#">Mot de Passe oublié ?</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <main class="container-fluid my-auto p-3 p-sm-5">
+
+    <div class="border border-primary rounded bg-light text-center py-3">
+
+      <div>
+
+        <h1 class="h2">Merci d'avoir commandé chez nous !</h1>
+
+        <div class="container-fluid text-left d-flex justify-content-between pt-4">
+          <div class="h6">Voici le résumé de votre commande :</div>
+          <div class="font-italic">(Les produits peuvent être séparés en plusieurs colis)</div>
+        </div>
+
+        <div class="dropdown-divider m-3"></div>
+
+        <div class="container-fluid text-left">
+          <div class="row">
+            <div id="confList" class="col-12 col-sm-6 pl-4"></div>
+            
+            <div class="col-12 col-sm-6 border-left border-secondary d-flex flex-column">
+              <div id="address">
+                <p class="h5 mb-4">Adresse de livraison</p>
+              </div>
+
+              <a class="btn btn-warning waves-btn border border-dark font-weight-bold justify-self-center" href="./index.html" aria-label="Accueil">Continuer mes achats</a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </main>
+
+  <footer class="mt-auto">
+    <nav class="navbar-light bg-light border-primary border-top" aria-label="Secondaire">
+        <ul class="nav justify-content-center py-2">
+            <li class="nav-item">
+            <a class="nav-link px-3 py-1 rounded" href="#">Mentions Légales</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link px-3 py-1 rounded" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link px-3 py-1 rounded" href="#">Plan</a>
+            </li>
+        </ul>
+    </nav>
+  </footer>
+
+    <a onclick="topFunction()" id="pageUp" class="btn waves-btn btn-outline-primary justify-content-center align-items-center p-0" aria-label="Retour haut de page">
+      <span class="fas fa-chevron-up fa-2x"></span>
+    </a>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!-- My js files -->
+    <script type="text/javascript" src="../js/ajax.js"></script>
+    <script type="text/javascript" src="../js/waran.js"></script>
+    <script type="text/javascript" src="../js/waves.js"></script>
+    <script type="text/javascript" src="../js/confirmation.js"></script>  
+</body>
+
+</html>

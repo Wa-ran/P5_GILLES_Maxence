@@ -56,10 +56,18 @@ const price = () => {
   priceText.textContent = 'Prix : ' + pricePurchase + ' €';
 }
 
-// Affichage du prix du panier (fonction dans waran.js)
-let inStore = getStore();
+// Affichage du prix du panier
+const writeTotal = async (position) => {
+  let total = 0;
+  let purchaseList = await getStore();
+  for (purchase of purchaseList) {
+    total = total + (purchase.quantity * purchase.price)
+  }
+  position.textContent = total / 100 + " €";
+};
+
 let basketPrice = document.querySelector('#basketPrice>span');
-writeTotal(basketPrice, inStore);
+writeTotal(basketPrice);
 
 // Gestion du formulaire d'achat
 let formProduct = document.getElementById('formProduct');
@@ -91,7 +99,7 @@ formProduct.addEventListener('submit', (e) => {
   localStorage.setItem(product.name, JSON.stringify(store));
   // Maj du prix du panier
   let inStore = getStore();  
-  writeTotal(basketPrice, inStore);
+  writeTotal(basketPrice);
 });
 
 // Recherche du groupe du produit

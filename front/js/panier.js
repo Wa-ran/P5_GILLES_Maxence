@@ -1,14 +1,27 @@
 let basket = document.getElementById('basket');
 let totalPanier = document.querySelector('#totalPanier>span');
-writeTotal(totalPanier);
+
 const writeBasket = async () => {
   // On récupère les produits du panier
   let prodInBasket = await getStore();
+
+  // Ecriture du prix du panier
+  const writeTotal = () => {
+    let total = 0;
+    for (prod of prodInBasket) {
+      total = total + (prod.quantity * prod.price)
+    }
+    totalPanier.textContent = total / 100 + " €";
+  };
+  writeTotal();
+
+  // Panier vide = demande à l'utilisateur de le remplir bien-sûr ^^
   if (prodInBasket.length == 0) {
-    // Panier vide = demande à l'utilisateur de le remplir bien-sûr ^^
     document.getElementById('toutVide').style.display = 'unset';
+    document.getElementById('colFrom').style.display = 'none';
     return
   };
+
   // Les divs des produits sont générés dynamiquement ainsi que leurs boutons, donc les variables sont des arrays que l'on va remplir
   let i = 0, prodQnt = {}, btnInc = {}, btnDec = {}, btnDelete = {}, prodPrice = {}, prodName = {};
     // Loop pour créer les divs des produits  
@@ -25,6 +38,7 @@ const writeBasket = async () => {
     prodPrice[i] = document.getElementById('prodPrice' + i.toString());
     prodName[i] = document.getElementById('prodName' + i.toString());
   }
+
   // Pour empêcher l'utilisateur d'entrer autre chose que des chiffres dans les inputs des produits
   function setInputFilter(textbox, inputFilter) {
     ["input"].forEach(function(event) {
@@ -42,6 +56,7 @@ const writeBasket = async () => {
       });
     });
   };
+
   // Pour bloquer la quantité d'achat entre 1 et 9
   const verif = (input, j) => {
     if (input.value < 1) {
@@ -54,6 +69,7 @@ const writeBasket = async () => {
       qntChange(j);
     }
   };
+
   // Fonction pour recalculer le prix du produit et du panier au changement de la quantité
   const qntChange = (j) => {
     let prodChange = prodInBasket[j - 1];
@@ -64,8 +80,9 @@ const writeBasket = async () => {
     storeQnt.qnt = prodChange.quantity;
     localStorage.setItem(prodChange.name, JSON.stringify(storeQnt));
 
-    writeTotal(totalPanier);
+    writeTotal();
   };
+
   // Pour enlever un élément du panier
   function removeParent(element, num, j) {
     let parent = element;
@@ -78,6 +95,7 @@ const writeBasket = async () => {
     localStorage.removeItem(prodInBasket[j - 1].name);
     writeTotal(totalPanier);
   };
+
   // Nouvelles loops ('i' en cours d'utilisation donc => 'j')
   // Solution au fait qu'en réécrivant le HTML avec la loop précédente => les addEvent sont perdus (sauf le dernier)
   for (let j = 1; j <= i; j++) {
@@ -99,9 +117,50 @@ const writeBasket = async () => {
       removeParent(btnDelete[j], 3, j);
     });
   };
+
   // jQuery pour forcer la sélection de tout le texte des inputs text
   $(function(){
     $(document).on('click','input[type=text]',function(){ this.select(); });
   });
+
+  // Envoie de la commande  
+  let commande = document.getElementById('commande');
+  commande.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    let confirmation = {};
+    // On vérifie en récupérant une dernière fois les produits au cas où des changements auraient eu lieu (nouveaux produits ou quantité depuis un autre onglet par ex.)
+    prodInBasket = await getStore();
+    // Objet contact
+    let contact = {
+      "firstName" : commande.elements.firstName.value,
+      "lastName" : commande.elements.lastName.value,
+      "address" : commande.elements.address.value,
+      "city" : commande.elements.city.value,
+      "email" : commande.elements.email.value,
+    };
+    // 1 API par catégorie = 1 post par catégorie
+    for (type of typeList) {
+      // Tableau products
+      let products = [];
+      for (product of prodInBasket) {
+        if (RegExp(type.title).test(product.category) === true) {
+          products.push(product._id);
+        }
+      };
+      if (products.length > 0) {
+        // Objet JSON à envoyer
+        let data = {
+          "contact" : contact,
+          "products" : products,
+        };
+        await ajaxPost(type.apiUrl + '/order', data, true)
+        .then(function(result) {
+          confirmation[type.title] = result;
+        })
+      }
+    };
+    localStorage.setItem("confirmation", JSON.stringify(confirmation));
+    window.location.href = "./confirmation.html"
+  })
 };
 writeBasket();

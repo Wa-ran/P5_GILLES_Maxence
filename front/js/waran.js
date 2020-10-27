@@ -61,21 +61,6 @@ const getStore = async () => {
   return purchaseList
 }
 
-// Fonction pour calculer le prix total du panier, utilisée pour écrire et envoyé avec le formulaire de commande
-const totalPrice = async () => {
-  let total = 0;
-  let purchaseList = await getStore();
-  for (purchase of purchaseList) {
-    total = total + (purchase.quantity * purchase.price)
-  }
-  return total
-}
-
-// Pour l'écriture du prix total (product et panier), utilisée sur les pages produit et panier
-const writeTotal = async (position) => {
-  let result = await totalPrice();
-  position.textContent = result / 100 + " €";
-};
 
 // Bouton haut de page ------------------------------------------------------
 let pageUp = document.getElementById('pageUp');
