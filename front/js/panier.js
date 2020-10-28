@@ -28,18 +28,18 @@ const writeBasket = async () => {
   // Les divs des produits sont générés dynamiquement ainsi que leurs boutons, donc les variables sont des arrays que l'on va remplir
   let i = 0, prodQnt = {}, btnInc = {}, btnDec = {}, btnDelete = {}, prodPrice = {}, prodName = {};
     // Loop pour créer les divs des produits  
-    for (product of prodInBasket) {
-    i++;
-    let div = document.createElement('div');
-    div.innerHTML = '<div class="dropdown-divider mx-5"></div><div class="d-flex flex-column align-items-center"><div class="d-flex flex-nowrap text-truncate w-100"><input id="prodQnt' + i + '" type="text" class="rounded border border-secondary align-self-end text-center m-0 quantity" maxlength="2" required><label for="prodQnt' + i + '" class="text-truncate p-1 mb-0 ml-2 font-weight-bold productName"><a id="prodName' + i + '" href="./product.html#' + product.category.replaceAll(' ', '_') + '/id-' + product._id + '">' + product.name + '</a></label></div></div><div class="d-flex flex-nowrap mb-1"><div class="prodBasketBtn"><button id="btnDec' + i + '" class="btn btn-secondary rounded-left" aria-label="Retirer 1">-</button><button id="btnInc' + i + '" class="btn btn-secondary rounded-right" aria-label="Ajouter 1">+</button></div><div class="prodBasketBtn"><button id="btnDelete' + i + '" class="btn btn-secondary rounded ml-1" aria-label="Enlever du panier">x</button></div><p class="badge align-self-end badge bg-white border border-secondary mb-0 font-weight-bold ml-auto"><span id="prodPrice' + i + '">' + (product.price * product.quantity) / 100 + '</span> €</p></div>';
-    basket.appendChild(div);
-    prodQnt[i] = document.getElementById('prodQnt' + i.toString());
-    prodQnt[i].value = product.quantity.toString();
-    btnInc[i] = document.getElementById('btnInc' + i.toString());
-    btnDec[i] = document.getElementById('btnDec' + i.toString());
-    btnDelete[i] = document.getElementById('btnDelete' + i.toString());
-    prodPrice[i] = document.getElementById('prodPrice' + i.toString());
-    prodName[i] = document.getElementById('prodName' + i.toString());
+    for (let i = 0; i < prodInBasket.length; i++) {
+      let product = prodInBasket[i];
+      let div = document.createElement('div');
+      div.innerHTML = '<div class="dropdown-divider mx-5"></div><div class="d-flex flex-column align-items-center"><div class="d-flex flex-nowrap text-truncate w-100"><input id="prodQnt' + i + '" type="text" class="rounded border border-secondary align-self-end text-center m-0 quantity" maxlength="2" required><label for="prodQnt' + i + '" class="text-truncate p-1 mb-0 ml-2 font-weight-bold productName"><a id="prodName' + i + '" href="./product.html#' + product.category.replaceAll(' ', '_') + '/id-' + product._id + '">' + product.name + '</a></label></div></div><div class="d-flex flex-nowrap mb-1"><div class="prodBasketBtn"><button id="btnDec' + i + '" class="btn btn-secondary rounded-left" aria-label="Retirer 1">-</button><button id="btnInc' + i + '" class="btn btn-secondary rounded-right" aria-label="Ajouter 1">+</button></div><div class="prodBasketBtn"><button id="btnDelete' + i + '" class="btn btn-secondary rounded ml-1" aria-label="Enlever du panier">x</button></div><p class="badge align-self-end badge bg-white border border-secondary mb-0 font-weight-bold ml-auto"><span id="prodPrice' + i + '">' + (product.price * product.quantity) / 100 + '</span> €</p></div>';
+      basket.appendChild(div);
+      prodQnt[i] = document.getElementById('prodQnt' + i.toString());
+      prodQnt[i].value = product.quantity.toString();
+      btnInc[i] = document.getElementById('btnInc' + i.toString());
+      btnDec[i] = document.getElementById('btnDec' + i.toString());
+      btnDelete[i] = document.getElementById('btnDelete' + i.toString());
+      prodPrice[i] = document.getElementById('prodPrice' + i.toString());
+      prodName[i] = document.getElementById('prodName' + i.toString());
   }
 
   // Pour empêcher l'utilisateur d'entrer autre chose que des chiffres dans les inputs des produits
@@ -61,7 +61,7 @@ const writeBasket = async () => {
   };
 
   // Pour bloquer la quantité d'achat entre 1 et 9
-  const verif = (input, j) => {
+  const verif = (input, i) => {
     if (input.value < 1) {
       return input.value = 1;
     }
@@ -69,15 +69,15 @@ const writeBasket = async () => {
       return input.value = 9;
     }
     else {
-      qntChange(j);
+      qntChange(i);
     }
   };
 
   // Fonction pour recalculer le prix du produit et du panier au changement de la quantité
-  const qntChange = (j) => {
-    let prodChange = prodInBasket[j - 1];
-    prodChange.quantity = prodQnt[j].value;
-    prodPrice[j].textContent = (prodChange.price * prodChange.quantity) / 100;
+  const qntChange = (i) => {
+    let prodChange = prodInBasket[i];
+    prodChange.quantity = prodQnt[i].value;
+    prodPrice[i].textContent = (prodChange.price * prodChange.quantity) / 100;
 
     let storeQnt = JSON.parse(localStorage.getItem(prodChange.name));
     storeQnt.qnt = prodChange.quantity;
@@ -87,37 +87,36 @@ const writeBasket = async () => {
   };
 
   // Pour enlever un élément du panier
-  function removeParent(element, num, j) {
-    let parent = element;
+  function removeParent(element, num, i) {
     for (let i = 0; i < num; i++) {
-        if (parent.parentNode) {
-            parent = parent.parentNode;
-        }
+      if (element.parentNode) {
+        element = element.parentNode;
+      }
     }
-    parent.remove();
-    localStorage.removeItem(prodInBasket[j - 1].name);
-    writeTotal(totalPanier);
+    element.remove();
+    localStorage.removeItem(prodInBasket[i].name);
+    location.reload();
   };
 
   // Nouvelles loops ('i' en cours d'utilisation donc => 'j')
-  // Solution au fait qu'en réécrivant le HTML avec la loop précédente => les addEvent sont perdus (sauf le dernier)
-  for (let j = 1; j <= i; j++) {
-      setInputFilter(prodQnt[j], function(value) {
+  // Solution au problème qu'en réécrivant le HTML avec la loop précédente, les addEvent sont perdus (sauf le dernier)
+  for (let i = 0; i < prodInBasket.length; i++) {
+      setInputFilter(prodQnt[i], function(value) {
       return /^\d$/.test(value);
     });
-    btnInc[j].addEventListener('click', () => {
-      prodQnt[j].value++;
-      verif(prodQnt[j], j);
+    btnInc[i].addEventListener('click', () => {
+      prodQnt[i].value++;
+      verif(prodQnt[i], i);
     });
-    btnDec[j].addEventListener('click', () => {
-      prodQnt[j].value--;
-      verif(prodQnt[j], j);
+    btnDec[i].addEventListener('click', () => {
+      prodQnt[i].value--;
+      verif(prodQnt[i], i);
     });
-    prodQnt[j].addEventListener('change', () => {
-      verif(prodQnt[j], j);
+    prodQnt[i].addEventListener('change', () => {
+      verif(prodQnt[i], i);
     });
-    btnDelete[j].addEventListener('click', () => {
-      removeParent(btnDelete[j], 3, j);
+    btnDelete[i].addEventListener('click', () => {
+      removeParent(btnDelete[i], 3, i);
     });
   };
 

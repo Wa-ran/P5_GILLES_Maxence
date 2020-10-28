@@ -224,6 +224,26 @@ ul[class = list-unstyled] > li {
 }
 
 
+// Scrollbar
+::-webkit-scrollbar {
+    background-color: $light;
+    overflow-y: overlay;
+    width: 10px;
+    border: solid 1px $secondary;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $secondary;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: $secondary;
+  }
+
+
 /*!
  * Waves v0.7.6
  * http://fian.my.id/Waves 
