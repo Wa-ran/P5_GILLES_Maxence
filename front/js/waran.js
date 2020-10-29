@@ -17,16 +17,21 @@ let teddy = addType('Ours en peluche faits main', 'http://localhost:3000/api/ted
 
 
 // Ancres pour la liste produits du header ------------------------------------------------------------
-const ancresList = (title) => {
-  let ancre = document.createElement('a');
-  ancre.className = "dropdown-item rounded px-1";
-  ancre.href = './index.html#' + title.replaceAll(' ', '_');
-  ancre.innerHTML = title;
-  menuProduct.appendChild(ancre);
-}
+const ancresList = (type) => {
+  ajaxGet(type.apiUrl)
+  .then(function() {
+    let ancre = document.createElement('a');
+    ancre.className = "dropdown-item rounded px-1";
+    ancre.href = './index.html#' + type.title.replaceAll(' ', '_');
+    ancre.innerHTML = type.title;
+    menuProduct.appendChild(ancre);
+  })
+  .catch(function() {return})
+};
+
 for (type of typeList) {
-  ancresList(type.title);
-}
+  ancresList(type)
+};
 
 // Fonction pour récupérer depuis localStorage la liste des produits achetés en y ajoutant la catégorie (pour l'api) et la quantité
 const getStore = async () => {

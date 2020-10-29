@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex">
 
     <link rel="stylesheet" href="../css/style.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
-    <title>Orinoco</title>
+    <title>Panier - Orinoco</title>
 </head>
 
 <body>
@@ -58,19 +59,20 @@
                       </span>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right border-primary dropleft mr-3 px-3">
-                      <a class="dropdown-item border border-light rounded my-1" href="#">Accueil</a>
-                      <a class="dropdown-item border border-light rounded my-1" href="#">Votre panier</a>
-                      <div role="separator" class="dropdown-divider"></div>
-                                                
-                        <!-- Bouton modal -->
-                      <button type="button" class="dropdown-item active btn waves-btnn btn-outline-primary my-0 text-center perso-btn-warn-style" data-toggle="modal" data-target="#modalConnexion">
-                          Connexion
-                      </button>
+                    <a class="dropdown-item border border-light rounded my-1" href="./index.html">Accueil</a>
+                    <a class="dropdown-item border border-light rounded my-1" href="./panier.html" aria-current="page">Votre panier</a>
+                    <a class="dropdown-item border border-light rounded my-1" href="./confirmation.html">Commandes</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                                              
+                      <!-- Bouton modal -->
+                    <button type="button" class="dropdown-item active btn waves-btnn btn-outline-primary my-0 text-center perso-btn-warn-style" data-toggle="modal" data-target="#modalConnexion">
+                        Connexion
+                    </button>
 
                   </div>
               </div>
 
-              <a class="nav-link p-1 ml-2 mr-3 my-auto" href="./panier.html">
+              <a class="nav-link p-1 ml-2 mr-3 my-auto" href="./panier.html" aria-current="page">
                   <img src="../images/panier.png" alt="Votre panier" height="40">
               </a>
           </div>

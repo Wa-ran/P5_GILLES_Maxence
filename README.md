@@ -17,4 +17,11 @@ console when the server starts, e.g. `Listening on port 3001`.
 ### Note de l'étudiant ###
 
 Tout mon travail se situe dans le dossier "front".
+
 Framework utilisé : Bootstrap.
+Le fichier "sass/_variable_override.scss" contient toutes mes modifications de style.
+
+Dans le dossier js :
+  - waran.js contient les scripts utilisés dans chaque page
+  - ajax.js les request
+  - chaque page est associée à un fichier.js

@@ -26,7 +26,7 @@ const writeBasket = async () => {
   };
 
   // Les divs des produits sont générés dynamiquement ainsi que leurs boutons, donc les variables sont des arrays que l'on va remplir
-  let i = 0, prodQnt = {}, btnInc = {}, btnDec = {}, btnDelete = {}, prodPrice = {}, prodName = {};
+  let prodQnt = {}, btnInc = {}, btnDec = {}, btnDelete = {}, prodPrice = {}, prodName = {};
     // Loop pour créer les divs des produits  
     for (let i = 0; i < prodInBasket.length; i++) {
       let product = prodInBasket[i];
@@ -86,18 +86,6 @@ const writeBasket = async () => {
     writeTotal();
   };
 
-  // Pour enlever un élément du panier
-  function removeParent(element, num, i) {
-    for (let i = 0; i < num; i++) {
-      if (element.parentNode) {
-        element = element.parentNode;
-      }
-    }
-    element.remove();
-    localStorage.removeItem(prodInBasket[i].name);
-    location.reload();
-  };
-
   // Nouvelles loops ('i' en cours d'utilisation donc => 'j')
   // Solution au problème qu'en réécrivant le HTML avec la loop précédente, les addEvent sont perdus (sauf le dernier)
   for (let i = 0; i < prodInBasket.length; i++) {
@@ -116,7 +104,8 @@ const writeBasket = async () => {
       verif(prodQnt[i], i);
     });
     btnDelete[i].addEventListener('click', () => {
-      removeParent(btnDelete[i], 3, i);
+      localStorage.removeItem(prodInBasket[i].name);
+      location.reload();
     });
   };
 

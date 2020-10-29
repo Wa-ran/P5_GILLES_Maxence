@@ -23,7 +23,6 @@ const fillPage = (object) => {
   productUrl = object.apiUrl + '/' + id;
   ajaxGet(productUrl)
   // Si erreur réseau (mauvaise url pour l'API) ou 404 (id n'existe pas) => modal
-  .catch(function() { modal() })
   .then(JSON.parse)
   .then(function(resolve) {
     product = resolve;
@@ -47,34 +46,47 @@ const fillPage = (object) => {
     productDescription.textContent = product.description;
     // Prix
     price();
-  });
+    // meta title et description
+    document.title = product.name + ' - Orinoco';
+    $('head').append( '<meta name="description" content="' + product.description + ' Disponible chez Orinoco !">' );
+  })
+  .catch(function() { modal() });
 }
 
-// Afichage du prix
+// Afichage du prix de l'article (en fonction de la quantité selectionnée)
 const price = () => {
   let pricePurchase = qnt.value * (product.price / 100);
   let priceText = document.getElementById('priceText');
   priceText.textContent = 'Prix : ' + pricePurchase + ' €';
 }
 
-// Affichage du prix du panier
-const writeTotal = async (position) => {
+// Affichage du prix du panier et de la quantité
+const writeTotal = async (quantity, panier) => {
   let total = 0;
-  let purchaseList = await getStore();
-  for (purchase of purchaseList) {
-    total = total + (purchase.quantity * purchase.price)
-  }
-  position.textContent = total / 100 + " €";
+  await getStore()
+  .then(function(resolve) {
+    for (purchase of resolve) {
+      total = total + (purchase.quantity * purchase.price);
+      let exp = purchase.name;
+      let test = product.name;
+      if (RegExp(exp.replaceAll(/[()]/g)).test(test.replaceAll(/[()]/g)) === true) {
+        quantity.textContent = purchase.quantity;
+      }
+    };
+    panier.textContent = total / 100 + " €";
+  })
 };
 
 let basketPrice = document.querySelector('#basketPrice>span');
-writeTotal(basketPrice);
+let qntProd = document.querySelector('#qntProd>span');
+writeTotal(qntProd, basketPrice);
 
 // Gestion du formulaire d'achat
 let formProduct = document.getElementById('formProduct');
-let qnt = document.getElementById('quantity');
+// Selection quantité
+let qnt = document.getElementById('quantitySelector');
 qnt.addEventListener('change', () => { price() });
-
+// Bonton achat
 let qntStored, qntTotale;
 formProduct.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -99,8 +111,7 @@ formProduct.addEventListener('submit', (e) => {
   // Stockage de l'achat
   localStorage.setItem(product.name, JSON.stringify(store));
   // Maj du prix du panier
-  let inStore = getStore();  
-  writeTotal(basketPrice);
+  writeTotal(qntProd, basketPrice);
 });
 
 // Recherche du groupe du produit

@@ -232,14 +232,14 @@ ul[class = list-unstyled] > li {
     border: solid 1px $secondary;
     border-radius: 5px;
   }
-  ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: transparent;
   }
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: $secondary;
     border-radius: 5px;
   }
-  ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: $secondary;
   }
 
